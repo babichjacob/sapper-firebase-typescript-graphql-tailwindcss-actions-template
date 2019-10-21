@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es2016",
+        "lib": [
+            "es2016",
+            "esnext.asynciterable"
+        ],
+        "typeRoots": [
+            "node_modules/@types",
+        ],
+        "types": [
+            "@pyoner/svelte-types",
+        ],
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "strictBindCallApply": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictPropertyInitialization": true
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "browser": true,
+        "es2020": true
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.ts",
+                "*.svelte"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "extends": [
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "plugins": [
+                "@typescript-eslint"
+            ]
+        }
+    ]
+}
