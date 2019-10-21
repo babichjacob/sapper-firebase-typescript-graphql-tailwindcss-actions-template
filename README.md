@@ -31,7 +31,7 @@ git clone https://github.com/babichjacob/sapper-firebase-typescript-graphql-tail
 Click the Fork button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
 
 ## 🛠 Usage
-### 🔁 Development
+### 🔄 Development
 ```sh
 npm run dev
 ```
@@ -53,6 +53,9 @@ firebase login:ci # if this doesn't work try node_modules\.bin\firebase login:ci
 Go to your repository's Settings > Secrets. Copy the result of the command above and save it as a Secret named `FIREBASE_TOKEN`.
 
 Test by making a commit to `master` and checking the Actions tab of your repository to see if your project successfully builds and deploys to Firebase.
+
+### 🕸️ TypeGraphQL
+Edit the `namedExports` in `rollup.config.js` for `"type-graphql"` [when you need to import something from the library](https://github.com/MichalLytek/type-graphql/issues/378).
 
 ## 😵 Help! I have a question
 [Create an issue](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template/issues/new) and I'll try to help.
