@@ -15,20 +15,16 @@ module.exports = {
 			spacing: {
 				"72": "18rem",
 				"96": "24rem",
-				"128": "32rem"
-			}
+				"128": "32rem",
+			},
 		},
 
-		fill: {
-			"current-color": "currentColor"
-		},
+		fill: {"current-color": "currentColor"},
 
-		stroke: {
-			"current-color": "currentColor"
-		}
+		stroke: {"current-color": "currentColor"},
 	},
 
 	variants: {},
 
-	plugins: []
+	plugins: [],
 };

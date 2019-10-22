@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import {Request as ExpressRequest, Response as ExpressResponse} from "express";
 
-export async function get(req: Request, res: Response): Promise<void> {
+export const get = async (req: ExpressRequest, res: ExpressResponse): Promise<void> => { // eslint-disable-line require-await
 	res.end("you made a get request");
-}
+};
 
-export async function post(req: Request, res: Response): Promise<void> {
+export const post = async (req: ExpressRequest, res: ExpressResponse): Promise<void> => { // eslint-disable-line require-await
 	res.end("you made a post request");
-}
+};

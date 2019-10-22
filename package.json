@@ -1,7 +1,7 @@
 {
 	"name": "sapper-firebase-typescript-graphql-tailwindcss-actions-template",
 	"description": "A template that includes Svelte with Sapper, Firebase functions and hosting, TypeScript and TypeGraphQL, Tailwind CSS, ESLint and EditorConfig, and automatic building and deployment with GitHub Actions",
-	"version": "2019.10.20",
+	"version": "2019.10.21",
 	"scripts": {
 		"dev:sapper": "node ./node_modules/sapper/dist/cli.js dev",
 		"prebuild:sapper": "rimraf - functions/__sapper__/build && mkdirp functions/__sapper__/build",

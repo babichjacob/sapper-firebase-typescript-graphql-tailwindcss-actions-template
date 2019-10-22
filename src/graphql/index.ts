@@ -1,25 +1,23 @@
 import "reflect-metadata";
-import { buildSchema, Resolver, Query } from "type-graphql";
-import { ApolloServer } from "apollo-server-express";
-import express, { Application } from "express";
-import { GraphQLSchema } from "graphql";
+import {Query, Resolver, buildSchema} from "type-graphql";
+import express, {Application} from "express";
+import {ApolloServer} from "apollo-server-express";
+import {GraphQLSchema} from "graphql";
 
 @Resolver()
 class HelloResolver {
-	@Query(() => String)
+	@Query(() => String) // eslint-disable-line require-await
 	async helloWorld(): Promise<string> {
 		return "Hello World!";
 	}
 }
 
 export const createApolloServer = async (): Promise<ApolloServer> => {
-	const schema: GraphQLSchema = await buildSchema({
-		resolvers: [HelloResolver]
-	});
+	const schema: GraphQLSchema = await buildSchema({resolvers: [HelloResolver]});
 
 	const apolloServer: ApolloServer = new ApolloServer({
 		schema,
-		playground: true
+		playground: true,
 	});
 
 	return apolloServer;
@@ -29,7 +27,7 @@ export const createExpressServer = async (path = "/graphql"): Promise<Applicatio
 	const app: Application = express();
 
 	const apolloServer = await createApolloServer();
-	apolloServer.applyMiddleware({ app, path });
+	apolloServer.applyMiddleware({app, path});
 
 	return app;
 };
