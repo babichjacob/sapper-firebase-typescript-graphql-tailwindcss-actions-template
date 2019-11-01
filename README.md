@@ -1,7 +1,7 @@
 <h1 align="center">🌐 Opinionated Sapper project base</h1>
 
 ## ❓ What is this?
-This is an extremely opinionated Sapper project base intended for my own use; that means it contains configuration to my preference and scripts fit for my (Windows) machine. That being said, there is a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use all of these things:
+This is an extremely opinionated Sapper project base intended for my own use; that means it contains configuration to my preference and scripts fit for my (Windows) machine. That being said, there is a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things:
 * [Sapper](https://sapper.svelte.dev/)
   * [Svelte 3](https://svelte.dev/)
 * [Firebase](https://firebase.google.com/)
@@ -19,6 +19,10 @@ This is an extremely opinionated Sapper project base intended for my own use; th
   * [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 * [EditorConfig](https://editorconfig.org/)
   * [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+The lower something is on this list, the easier it is to reconfigure or remove.
+
+The site built from this repo can be found [here](https://fir-sapper-tailwindcss.web.app/).
 
 ## 📋 Copy
 Choose either to clone or fork depending on your preference.
