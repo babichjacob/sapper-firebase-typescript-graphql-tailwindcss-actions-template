@@ -24,6 +24,8 @@ module.exports = {
 		stroke: {"current-color": "currentColor"},
 	},
 
+	corePlugins: {placeholderColor: false},
+
 	variants: {},
 
 	plugins: [],
