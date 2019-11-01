@@ -12,6 +12,4 @@
 	<title>{path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Index'}</title>
 </svelte:head>
 
-<main class="flex-1 flex flex-col">
-	<slot />
-</main>
+<slot />
