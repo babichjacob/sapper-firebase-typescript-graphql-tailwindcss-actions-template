@@ -10,7 +10,6 @@
 		],
 		"types": [
 			"@pyoner/svelte-types",
-			"@types/graphql"
 		],
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
