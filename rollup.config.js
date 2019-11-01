@@ -20,6 +20,13 @@ const warningIsIgnored = (warning) => warning.message.includes(
 	warning.message.includes("Circular dependency: node_modules\\glob\\glob.js ->") ||
 	warning.message.includes(
 		"Circular dependency: node_modules\\apollo-server-express\\node_modules\\apollo-server-core\\dist\\runHttpQuery.js ->"
+	) || warning.message.includes(
+	"Circular dependency: node_modules\\apollo-server-core\\dist\\index.js ->"
+) || warning.message.includes(
+	"Circular dependency: node_modules\\apollo-server-core\\dist\\runHttpQuery.js ->"
+) ||
+	warning.message.includes(
+		"Circular dependency: node_modules\\apollo-server-express\\node_modules\\apollo-server-core\\dist\\index.js ->"
 	) ||
 	warning.message.includes(
 		"Circular dependency: node_modules\\protobufjs\\src\\util\\minimal.js ->"
@@ -29,16 +36,12 @@ const warningIsIgnored = (warning) => warning.message.includes(
 	) ||
 	warning.message.includes(
 		"Circular dependency: node_modules\\type-graphql\\dist\\errors\\index.js ->"
-	) ||
-	warning.message.includes(
-		"Circular dependency: node_modules\\apollo-server-express\\node_modules\\apollo-server-core\\dist\\index.js ->"
 	);
 
 const onwarn = (warning, onwarn_) => {
 	if (warningIsIgnored(warning)) return;
 	if (warning.code === "CIRCULAR_DEPENDENCY") if (/[/\\]@sapper[/\\]/.test(warning.message)) return;
 
-	console.log(`check this out: ${warning.message}`);
 	onwarn_(warning);
 };
 const dedupe = (importee) => importee === "svelte" || importee.startsWith("svelte/");
