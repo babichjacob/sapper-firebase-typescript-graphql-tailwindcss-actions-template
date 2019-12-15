@@ -1,12 +1,15 @@
 <h1 align="center">🌐 Opinionated Sapper project base</h1>
 
 ## ❓ What is this?
-This is an extremely opinionated Sapper project base intended for my own use; that means it contains configuration to my preference and scripts fit for my (Windows) machine. That being said, there is a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things:
+The site built from this repo can be found [here](https://fir-sapper-tailwindcss.web.app/).
+
+This is an extremely opinionated Sapper project base intended for my own use; that means it contains configuration to my preference and scripts fit for my (Windows) machine. That being said, there is a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
 * [Sapper](https://sapper.svelte.dev/)
   * [Svelte 3](https://svelte.dev/)
 * [Firebase](https://firebase.google.com/)
-  * [Functions](https://firebase.google.com/docs/functions/)
+  * [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   * [Hosting](https://firebase.google.com/docs/hosting)
+  * Thanks to [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
 * [TypeScript](https://www.typescriptlang.org/)
   * [TypeGraphQL](https://typegraphql.ml/)
   * Inside Svelte components, thanks to [`svelte-typescript`](https://github.com/pyoner/svelte-typescript)
@@ -20,10 +23,6 @@ This is an extremely opinionated Sapper project base intended for my own use; th
 * [EditorConfig](https://editorconfig.org/)
   * [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 
-The lower something is on this list, the easier it is to reconfigure or remove.
-
-The site built from this repo can be found [here](https://fir-sapper-tailwindcss.web.app/).
-
 ## 📋 Copy
 Choose either to clone or fork depending on your preference.
 
@@ -32,7 +31,7 @@ Choose either to clone or fork depending on your preference.
 git clone https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template
 ```
 ### 🍴 Fork
-Click the Fork button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
+Click the `Use this template` button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
 
 ## 🛠 Usage
 ### 🔄 Development
