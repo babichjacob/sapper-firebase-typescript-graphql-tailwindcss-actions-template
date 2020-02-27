@@ -5,5 +5,5 @@
 
 <svelte:options immutable />
 
-<h1 class="text-2xl text-blue-700">{title}</h1>
-<p class="text-blue-800">{paragraph}</p>
+<h1 class="text-3xl text-blue-500 font-thin">{title}</h1>
+<p class="mt-4 text-gray-700">{paragraph}</p>

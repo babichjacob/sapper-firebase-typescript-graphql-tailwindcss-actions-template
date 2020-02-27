@@ -4,12 +4,13 @@
 
 <div class="flex flex-1 flex-col items-center justify-center">
 	<ExampleComponent
-		title="This is the index!"
-		paragraph="This is the paragraph on the index" />
+		title="🌐 Sapper project base"
+		paragraph="This is an example route and component to make sure everything's working." />
 
 	<a
-		class="mt-8 text-pink-700 hover:text-pink-500 focus:text-pink-500
-		focus:outline-none"
+		class="mt-8 p-3 rounded-lg shadow-md text-pink-800 bg-pink-200 
+		       transition duration-200 ease-in-out
+		       hover:bg-pink-300 focus:bg-pink-300 focus:outline-none focus:shadow-outline"
 		href="/graphql">
 		Check out the GraphQL playground!
 	</a>
