@@ -1,9 +1,9 @@
 <h1 align="center">🌐 Opinionated Sapper project base</h1>
 
 ## ❓ What is this?
-The site built from this repo can be found [here](https://fir-sapper-tailwindcss.web.app/).
+The site that builds from this repository can be found [here](https://fir-sapper-tailwindcss.web.app/).
 
-This is an extremely opinionated Sapper project base intended for my own use; that means it contains configuration to my preference and scripts fit for my (Windows) machine. That being said, there is a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
+This is an extremely opinionated Sapper project base intended for my own use. That being said, there is quite a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
 * [Sapper](https://sapper.svelte.dev/)
   * [Svelte 3](https://svelte.dev/)
 * [Firebase](https://firebase.google.com/)
@@ -47,15 +47,15 @@ npm run deploy
 
 ## ⚙ Configuration
 ### 🔥 Firebase and 🐙 GitHub Actions
-The least you should need to modify to get started is to edit `.firebaserc`, changing the project ID to *your* project ID. This also, obviously, means that you need to have initialized your project in the [Firebase console](https://console.firebase.google.com/).
+The least you should need to do to get started is to edit `.firebaserc`, changing the project ID to *your* project (initialized in the [Firebase console](https://console.firebase.google.com/)) ID.
 
-For automatic building and deployment to work, You need to generate [a CI login token from Firebase](https://firebase.google.com/docs/cli#cli-ci-systems):
+For automatic building and deployment to work, you need to generate [a CI login token from Firebase](https://firebase.google.com/docs/cli#cli-ci-systems):
 ```sh
-firebase login:ci # if this doesn't work try node_modules\.bin\firebase login:ci
+firebase login:ci # If this doesn't work, try node_modules/.bin/firebase login:ci
 ```
-Go to your repository's Settings > Secrets. Copy the result of the command above and save it as a Secret named `FIREBASE_TOKEN`.
+Then, go to your repository's Settings > Secrets. Copy the result of the command above and save it as a Secret named `FIREBASE_TOKEN`.
 
-Test by making a commit to `master` and checking the Actions tab of your repository to see if your project successfully builds and deploys to Firebase.
+You can test if it's working by making a commit to `master` and checking the Actions tab of your repository to see if your project successfully builds and deploys to Firebase.
 
 ### 🕸️ TypeGraphQL
 Edit the `namedExports` in `rollup.config.js` for `"type-graphql"` [when you need to import something from the library](https://github.com/MichalLytek/type-graphql/issues/378).
@@ -66,7 +66,7 @@ Edit the `namedExports` in `rollup.config.js` for `"type-graphql"` [when you nee
 ## 😡 Fix! There is something that needs improvement
 [Create an issue](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template/issues/new) or [pull request](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template/pulls) and I'll try to fix.
 
-I'm sorry, I'm still a beginner so there are likely to be anti-patterns, bad practices, and suboptimal choices in this project. Thank you for bringing anything like that to my attention should you see any or fix them for me.
+I'm sorry, because of my skill level and the fragility of (the combination of) some of these tools, there are likely to be problems in this project. Thank you for bringing them to my attention or fixing them for me.
 
 ## 📄 License
 MIT
