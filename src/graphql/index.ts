@@ -8,7 +8,7 @@ import {GraphQLSchema} from "graphql";
 class HelloResolver {
 	@Query(() => String) // eslint-disable-line require-await
 	async helloWorld(): Promise<string> {
-		return "Hello World!";
+		return "Hello world!";
 	}
 }
 
