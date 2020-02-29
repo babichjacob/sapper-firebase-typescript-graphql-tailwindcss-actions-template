@@ -1,11 +1,11 @@
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@rollup/plugin-commonjs";
 import config from "sapper/config/rollup.js";
-import json from "rollup-plugin-json";
+import json from "@rollup/plugin-json";
 import pkg from "./package.json";
 import {preprocess} from "@pyoner/svelte-ts-preprocess";
-import replace from "rollup-plugin-replace";
-import resolve from "rollup-plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
+import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import {terser} from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
@@ -14,29 +14,22 @@ const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = Boolean(process.env.SAPPER_LEGACY_BUILD);
 
-const warningIsIgnored = (warning) => warning.message.includes(
-	"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification"
-) ||
-	warning.message.includes("Circular dependency: node_modules\\glob\\glob.js ->") ||
+const ignoredCircularDependencies = [
+	"node_modules/@apollo/protobufjs/src/util/minimal.js",
+	"node_modules/apollo-server-core/dist/index.js",
+	"node_modules/apollo-server-core/dist/runHttpQuery.js",
+	"node_modules/apollo-server-express/node_modules/apollo-server-core/dist/index.js",
+	"node_modules/apollo-server-express/node_modules/apollo-server-core/dist/runHttpQuery.js",
+	"node_modules/glob/glob.js",
+	"node_modules/graphql-tools/dist/generate/index.js",
+	"node_modules/protobufjs/src/util/minimal.js",
+	"node_modules/type-graphql/dist/errors/index.js",
+];
+
+const warningIsIgnored = (warning) =>
 	warning.message.includes(
-		"Circular dependency: node_modules\\apollo-server-express\\node_modules\\apollo-server-core\\dist\\runHttpQuery.js ->"
-	) || warning.message.includes(
-	"Circular dependency: node_modules\\apollo-server-core\\dist\\index.js ->"
-) || warning.message.includes(
-	"Circular dependency: node_modules\\apollo-server-core\\dist\\runHttpQuery.js ->"
-) ||
-	warning.message.includes(
-		"Circular dependency: node_modules\\apollo-server-express\\node_modules\\apollo-server-core\\dist\\index.js ->"
-	) ||
-	warning.message.includes(
-		"Circular dependency: node_modules\\protobufjs\\src\\util\\minimal.js ->"
-	) ||
-	warning.message.includes(
-		"Circular dependency: node_modules\\graphql-tools\\dist\\generate\\index.js ->"
-	) ||
-	warning.message.includes(
-		"Circular dependency: node_modules\\type-graphql\\dist\\errors\\index.js ->"
-	);
+		"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification"
+	) || ignoredCircularDependencies.some((posixPath) => ([posixPath, posixPath.replace("/", "\\")].some((path) => warning.message.includes(`Circular dependency: ${path} ->`))));
 
 const onwarn = (warning, onwarn_) => {
 	if (warningIsIgnored(warning)) return;
@@ -44,6 +37,7 @@ const onwarn = (warning, onwarn_) => {
 
 	onwarn_(warning);
 };
+
 const dedupe = (importee) => importee === "svelte" || importee.startsWith("svelte/");
 
 export default {
