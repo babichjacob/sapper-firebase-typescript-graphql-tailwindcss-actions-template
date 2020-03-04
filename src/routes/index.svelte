@@ -1,4 +1,5 @@
 <script lang="typescript">
+	// @ts-ignore
 	import ExampleComponent from "../components/ExampleComponent.svelte";
 </script>
 

@@ -9,4 +9,5 @@
     "[typescript]": {
         "editor.formatOnSave": false
     },
+    "svelte.plugin.typescript.diagnostics.enable": true,
 }
