@@ -26,10 +26,9 @@ const ignoredCircularDependencies = [
 	"node_modules/type-graphql/dist/errors/index.js",
 ];
 
-const warningIsIgnored = (warning) =>
-	warning.message.includes(
-		"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification"
-	) || ignoredCircularDependencies.some((posixPath) => ([posixPath, posixPath.replace("/", "\\")].some((path) => warning.message.includes(`Circular dependency: ${path} ->`))));
+const warningIsIgnored = (warning) => warning.message.includes(
+	"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification",
+) || ignoredCircularDependencies.some((posixPath) => ([posixPath, posixPath.replace(/\//g, "\\")].some((path) => (warning.message.includes(`Circular dependency: ${path} ->`)))));
 
 const onwarn = (warning, onwarn_) => {
 	if (warningIsIgnored(warning)) return;
@@ -117,7 +116,7 @@ export default {
 			}),
 		],
 		external: Object.keys(pkg.dependencies).concat(
-			require("module").builtinModules || Object.keys(process.binding("natives"))
+			require("module").builtinModules || Object.keys(process.binding("natives")),
 		),
 
 		onwarn,

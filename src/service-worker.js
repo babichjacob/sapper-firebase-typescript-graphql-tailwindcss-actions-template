@@ -7,18 +7,18 @@ const ASSETS = `cache${timestamp}`,
 	to_cache = shell.concat(files),
 	cached = new Set(to_cache);
 
-self.addEventListener("install", (event) => { // eslint-disable-line no-shadow
+self.addEventListener("install", (event) => { // eslint-disable-line no-shadow,no-inline-comments,line-comment-position
 	event.waitUntil(
 		caches
 			.open(ASSETS)
 			.then((cache) => cache.addAll(to_cache))
 			.then(() => {
 				self.skipWaiting();
-			})
+			}),
 	);
 });
 
-self.addEventListener("activate", (event) => { // eslint-disable-line no-shadow
+self.addEventListener("activate", (event) => { // eslint-disable-line no-shadow,no-inline-comments,line-comment-position
 	event.waitUntil(
 		caches.keys().then(async (keys) => {
 			// Delete old caches
@@ -26,11 +26,11 @@ self.addEventListener("activate", (event) => { // eslint-disable-line no-shadow
 
 
 			self.clients.claim();
-		})
+		}),
 	);
 });
 
-self.addEventListener("fetch", (event) => { // eslint-disable-line no-shadow
+self.addEventListener("fetch", (event) => { // eslint-disable-line no-shadow,no-inline-comments,line-comment-position
 	if (event.request.method !== "GET" || event.request.headers.has("range")) return;
 
 	const url = new URL(event.request.url);
@@ -76,6 +76,6 @@ self.addEventListener("fetch", (event) => { // eslint-disable-line no-shadow
 
 					throw err;
 				}
-			})
+			}),
 	);
 });
