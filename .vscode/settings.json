@@ -1,13 +1,16 @@
 {
-    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSaveTimeout": 2800,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "source.fixAll": true
     },
     "[javascript]": {
-        "editor.formatOnSave": false
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[typescript]": {
-        "editor.formatOnSave": false
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "svelte.plugin.typescript.diagnostics.enable": true,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
 }
