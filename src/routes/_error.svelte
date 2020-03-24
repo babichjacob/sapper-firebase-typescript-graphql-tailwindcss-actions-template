@@ -2,6 +2,7 @@
 	export let status: string;
 	export let error: Error;
 
+	// @ts-ignore
 	const dev = process.env.NODE_ENV === "development";
 </script>
 
