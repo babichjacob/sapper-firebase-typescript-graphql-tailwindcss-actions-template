@@ -9,24 +9,25 @@ View the full documentation at https://tailwindcss.com.
 
 */
 
+/* eslint-disable global-require */
 module.exports = {
 	theme: {
 		extend: {
 			spacing: {
-				"72": "18rem",
-				"96": "24rem",
-				"128": "32rem",
+				72: "18rem",
+				96: "24rem",
+				128: "32rem",
 			},
 		},
-
-		fill: {"current-color": "currentColor"},
-
-		stroke: {"current-color": "currentColor"},
 	},
 
-	corePlugins: {placeholderColor: false},
+	corePlugins: {
+		placeholderColor: false,
+	},
 
 	variants: {},
 
-	plugins: [],
+	plugins: [
+		require("@tailwindcss/ui"),
+	],
 };
