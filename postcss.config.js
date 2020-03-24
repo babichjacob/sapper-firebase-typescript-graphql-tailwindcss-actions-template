@@ -6,7 +6,12 @@ module.exports = {
 	plugins: [
 		require("tailwindcss")("./tailwind.config.js"),
 
-		require("postcss-preset-env")(),
+		require("postcss-preset-env")({
+			features: {
+				// https://github.com/tailwindcss/tailwindcss/issues/1190
+				"focus-within-pseudo-class": false,
+			},
+		}),
 
 		!dev && require("@fullhuman/postcss-purgecss")({
 			content: ["./src/**/*.svelte", "./src/**/*.html"],
