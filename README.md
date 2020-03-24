@@ -4,24 +4,23 @@
 The site that builds from this repository can be found [here](https://fir-sapper-tailwindcss.web.app/).
 
 This is an extremely opinionated Sapper project base intended for my own use. That being said, there is quite a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
-* [Sapper](https://sapper.svelte.dev/)
-  * [Svelte 3](https://svelte.dev/)
+* [Sapper for Svelte](https://sapper.svelte.dev/)
 * [Firebase](https://firebase.google.com/)
   * [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   * [Hosting](https://firebase.google.com/docs/hosting)
   * Thanks to [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
 * [TypeScript](https://www.typescriptlang.org/)
   * [TypeGraphQL](https://typegraphql.ml/)
-  * Inside Svelte components, thanks to [`svelte-typescript`](https://github.com/pyoner/svelte-typescript)
-* [Tailwind CSS](https://tailwindcss.com/)
+  * Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
+* [PostCSS](https://postcss.org/)
+  * [Tailwind CSS](https://tailwindcss.com/)
   * [PurgeCSS](https://www.purgecss.com/)
   * [CSSNano](https://cssnano.co/)
+  * Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
 * [GitHub Actions](https://github.com/features/actions)
   * Automatic building and deployment (to Firebase), triggered on commits to master
 * [ESLint](https://eslint.org/)
   * [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-* [EditorConfig](https://editorconfig.org/)
-  * [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 
 ## 📋 Copy
 Choose either to clone or fork depending on your preference.
@@ -40,7 +39,7 @@ npm run dev
 ```
 
 ### 🔥 Deployment to Firebase
-This will run the `build` script for you before deploying.
+This will create a production build for you before deploying.
 ```sh
 npm run deploy
 ```

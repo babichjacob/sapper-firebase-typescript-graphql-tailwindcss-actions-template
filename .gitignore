@@ -1,6 +1,7 @@
+__sapper__/
 .DS_Store
+.firebase/
 node_modules/
 /src/node_modules/@sapper/
-__sapper__/
 static/main.css
-.firebase/
+static/main.css.map

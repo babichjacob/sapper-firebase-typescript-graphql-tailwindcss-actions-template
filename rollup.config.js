@@ -1,18 +1,22 @@
 import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import config from "sapper/config/rollup.js";
+import config from "sapper/config/rollup";
 import json from "@rollup/plugin-json";
-import pkg from "./package.json";
-import {preprocess} from "@pyoner/svelte-ts-preprocess";
+import sveltePreprocess from "svelte-preprocess";
 import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
-import {terser} from "rollup-plugin-terser";
+import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
+import pkg from "./package.json";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = Boolean(process.env.SAPPER_LEGACY_BUILD);
+
+const preprocess = sveltePreprocess({
+	postcss: true,
+});
 
 const ignoredCircularDependencies = [
 	"node_modules/@apollo/protobufjs/src/util/minimal.js",
@@ -26,10 +30,9 @@ const ignoredCircularDependencies = [
 	"node_modules/type-graphql/dist/errors/index.js",
 ];
 
-const warningIsIgnored = (warning) =>
-	warning.message.includes(
-		"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification"
-	) || ignoredCircularDependencies.some((posixPath) => ([posixPath, posixPath.replace("/", "\\")].some((path) => warning.message.includes(`Circular dependency: ${path} ->`))));
+const warningIsIgnored = (warning) => warning.message.includes(
+	"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification",
+) || ignoredCircularDependencies.some((posixPath) => ([posixPath, posixPath.replace(/\//g, "\\")].some((path) => (warning.message.includes(`Circular dependency: ${path} ->`)))));
 
 const onwarn = (warning, onwarn_) => {
 	if (warningIsIgnored(warning)) return;
@@ -53,7 +56,12 @@ export default {
 				dev,
 				hydratable: true,
 				emitCss: true,
-				preprocess: preprocess(),
+				preprocess: [
+					preprocess,
+				],
+				css: (css) => {
+					css.write("static/main.css");
+				},
 			}),
 			resolve({
 				mainFields: ["module", "main", "browser"],
@@ -63,28 +71,28 @@ export default {
 			typescript(),
 			json(),
 
-			legacy &&
-			babel({
+			legacy
+			&& babel({
 				extensions: [".js", ".mjs", ".html", ".svelte"],
 				runtimeHelpers: true,
 				exclude: ["node_modules/@babel/**"],
 				presets: [
 					[
 						"@babel/preset-env",
-						{targets: "> 0.25%, not dead"},
+						{ targets: "> 0.25%, not dead" },
 					],
 				],
 				plugins: [
 					"@babel/plugin-syntax-dynamic-import",
 					[
 						"@babel/plugin-transform-runtime",
-						{useESModules: true},
+						{ useESModules: true },
 					],
 				],
 			}),
 
-			!dev &&
-			terser({module: true}),
+			!dev
+			&& terser({ module: true }),
 		],
 
 		onwarn,
@@ -102,7 +110,9 @@ export default {
 			svelte({
 				generate: "ssr",
 				dev,
-				preprocess: preprocess(),
+				preprocess: [
+					preprocess,
+				],
 			}),
 			json(),
 			resolve({
@@ -113,11 +123,12 @@ export default {
 			typescript(),
 			commonjs({
 				extensions: [".js", ".ts"],
-				namedExports: {"type-graphql": ["buildSchema", "ObjectType", "Field", "ID", "Query", "Resolver"]},
+				namedExports: { "type-graphql": ["buildSchema", "ObjectType", "Field", "ID", "Query", "Resolver"] },
 			}),
 		],
 		external: Object.keys(pkg.dependencies).concat(
-			require("module").builtinModules || Object.keys(process.binding("natives"))
+			// eslint-disable-next-line global-require
+			require("module").builtinModules || Object.keys(process.binding("natives")),
 		),
 
 		onwarn,

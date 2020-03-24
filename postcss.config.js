@@ -1,7 +1,6 @@
+/* eslint-disable global-require */
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
-
-console.log(`postcss: ${dev ? "development" : "production"} build`);
 
 module.exports = {
 	plugins: [
@@ -17,7 +16,7 @@ module.exports = {
 		!dev && require("cssnano")({
 			preset: [
 				"default",
-				{discardComments: {removeAll: true}},
+				{ discardComments: { removeAll: true } },
 			],
 		}),
 	],
