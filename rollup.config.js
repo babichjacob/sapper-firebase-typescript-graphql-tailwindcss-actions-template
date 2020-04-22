@@ -2,21 +2,18 @@ import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import config from "sapper/config/rollup";
 import json from "@rollup/plugin-json";
-import sveltePreprocess from "svelte-preprocess";
 import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
+
+const { preprocess } = require("./svelte.config");
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = Boolean(process.env.SAPPER_LEGACY_BUILD);
-
-const preprocess = sveltePreprocess({
-	postcss: true,
-});
 
 const ignoredCircularDependencies = [
 	"node_modules/@apollo/protobufjs/src/util/minimal.js",

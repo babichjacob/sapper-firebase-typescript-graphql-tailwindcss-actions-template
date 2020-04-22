@@ -9,7 +9,6 @@
 	}
 </style>
 
-
 <div class="centerer">
 	<ExampleComponent
 		title="🌐 Opinionated Sapper project base"

@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import {
 	files, routes, shell, timestamp, // eslint-disable-line no-unused-vars
-} from "@sapper/service-worker";
+} from "@sapper/service-worker"; // eslint-disable-line import/no-unresolved
 
 const ASSETS = `cache${timestamp}`;
 

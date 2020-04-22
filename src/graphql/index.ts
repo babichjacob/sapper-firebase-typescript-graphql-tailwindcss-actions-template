@@ -5,15 +5,15 @@ import { ApolloServer } from "apollo-server-express";
 import { GraphQLSchema } from "graphql";
 
 @Resolver()
-class HelloResolver {
-  @Query(() => String)
+class HelloWorldResolver {
+  @Query(() => String, { description: "Example thing to query" })
 	async helloWorld(): Promise<string> {
 		return "Hello world!";
 	}
 }
 
 export const createApolloServer = async (): Promise<ApolloServer> => {
-	const schema: GraphQLSchema = await buildSchema({ resolvers: [HelloResolver] });
+	const schema: GraphQLSchema = await buildSchema({ resolvers: [HelloWorldResolver] });
 
 	const apolloServer: ApolloServer = new ApolloServer({
 		schema,

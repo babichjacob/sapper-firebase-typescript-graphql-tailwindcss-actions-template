@@ -2,8 +2,9 @@
 	"compilerOptions": {
 		"target": "es2016",
 		"lib": [
+			"dom",
 			"es2016",
-			"esnext.asynciterable"
+			"esnext.asynciterable",
 		],
 		"typeRoots": [
 			"node_modules/@types",

@@ -5,6 +5,8 @@ The site that builds from this repository can be found [here](https://fir-sapper
 
 This is an extremely opinionated Sapper project base intended for my own use. That being said, there is quite a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
 * [Sapper for Svelte](https://sapper.svelte.dev/)
+  * [Official VS Code Plugin (beta)](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
+  * [Type Checker VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=halfnelson.svelte-type-checker-vscode)
 * [Firebase](https://firebase.google.com/)
   * [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   * [Hosting](https://firebase.google.com/docs/hosting)
@@ -21,6 +23,7 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   * Automatic building and deployment (to Firebase), triggered on commits to master
 * [ESLint](https://eslint.org/)
   * [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  * `eslint:fix` package script
 
 ## 📋 Copy
 Choose either to clone or fork depending on your preference.
@@ -50,7 +53,7 @@ The least you should need to do to get started is to edit `.firebaserc`, changin
 
 For automatic building and deployment to work, you need to generate [a CI login token from Firebase](https://firebase.google.com/docs/cli#cli-ci-systems):
 ```sh
-firebase login:ci # If this doesn't work, try node_modules/.bin/firebase login:ci
+npm run firebase login:ci
 ```
 Then, go to your repository's Settings > Secrets. Copy the result of the command above and save it as a Secret named `FIREBASE_TOKEN`.
 

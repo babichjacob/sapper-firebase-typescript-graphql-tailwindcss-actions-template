@@ -3,9 +3,6 @@
 		"eslint:recommended",
 		"airbnb-base"
 	],
-	"plugins": [
-		"svelte3"
-	],
 	"parserOptions": {
 		"ecmaVersion": 11,
 		"sourceType": "module",
@@ -39,8 +36,7 @@
 	"overrides": [
 		{
 			"files": [
-				"*.ts",
-				"*.svelte"
+				"*.ts"
 			],
 			"parser": "@typescript-eslint/parser",
 			"extends": [
@@ -52,9 +48,20 @@
 		},
 		{
 			"files": [
-				"**/*.svelte"
+				"*.svelte"
 			],
-			"processor": "svelte3/svelte3"
+			"plugins": [
+				"svelte3"
+			],
+			"processor": "svelte3/svelte3",
+			"rules": {
+				"import/first": "off",
+				"import/no-duplicates": "off",
+				"import/no-mutable-exports": "off",
+				"import/no-mutable-unresolved": "off",
+				"no-undef": "off",
+				"no-unused-vars": "off"
+			}
 		}
 	]
 }
