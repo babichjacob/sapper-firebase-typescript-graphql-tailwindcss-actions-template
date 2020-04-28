@@ -32,8 +32,22 @@ Choose either to clone or fork depending on your preference.
 ```sh
 git clone https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template
 ```
+
 ### 🍴 Fork
 Click the `Use this template` button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
+
+
+### ⬇️ Install Dependencies
+Both the project root's dependencies,
+```sh
+cd sapper-firebase-typescript-graphql-tailwindcss-actions-template
+npm install
+```
+and the Firebase functions' dependencies (for deploying outside of GitHub Actions) need to be installed.
+```sh
+cd functions
+npm install
+```
 
 ## 🛠 Usage
 ### 🔄 Development
