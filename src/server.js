@@ -1,13 +1,13 @@
 import * as sapper from "@sapper/server";
 import compression from "compression";
 import sirv from "sirv";
-import { createExpressServer } from "./graphql/index.ts";
+import { createApolloServerExpress } from "./graphql/index.ts";
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
 const createSapperAndApolloServer = async (dev_) => {
-	const app = await createExpressServer();
+	const app = await createApolloServerExpress();
 	if (dev_) app.use(compression({ threshold: 0 }), sirv("static", { dev: true }));
 
 	app.use(sapper.middleware());

@@ -18,12 +18,13 @@ export const createApolloServer = async (): Promise<ApolloServer> => {
 	const apolloServer: ApolloServer = new ApolloServer({
 		schema,
 		playground: true,
+		introspection: true,
 	});
 
 	return apolloServer;
 };
 
-export const createExpressServer = async (path = "/graphql"): Promise<Application> => {
+export const createApolloServerExpress = async (path = "/graphql"): Promise<Application> => {
 	const app: Application = express();
 
 	const apolloServer = await createApolloServer();
