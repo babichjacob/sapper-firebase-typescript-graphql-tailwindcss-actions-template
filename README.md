@@ -69,7 +69,7 @@ This will create a production build for you before deploying.
 npm run deploy
 ```
 
-If you do not need to include heavy Babel transforms and polyfills to support old browsers on your site, then remove the `--legacy` flag in the `build` package script to lighten it up.
+If you do not need to include heavy Babel transforms and polyfills to support old browsers on your site, then remove the `--legacy` flag in the `sapper:build` package script to lighten it up.
 
 ### 🔨 Testing Production Builds Locally
 This probably pairs well with [Firebase Emulators](https://firebase.google.com/docs/rules/emulator-setup).
