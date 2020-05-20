@@ -28,7 +28,7 @@
 		"firebase": "firebase",
 		"firebase:deploy": "firebase deploy",
 		"sapper": "sapper",
-		"sapper:build": "cross-env NODE_ENV=production sapper build",
+		"sapper:build": "cross-env NODE_ENV=production sapper build --legacy",
 		"build:rmdir": "rimraf - functions/__sapper__/build",
 		"build:mkdir": "mkdirp functions/__sapper__/build",
 		"build:cp": "ncp ./__sapper__/build ./functions/__sapper__/build",
