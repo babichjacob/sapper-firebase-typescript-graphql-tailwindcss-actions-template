@@ -1,6 +1,5 @@
 {
     "editor.formatOnType": true,
-    "editor.codeActionsOnSaveTimeout": 2800,
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },

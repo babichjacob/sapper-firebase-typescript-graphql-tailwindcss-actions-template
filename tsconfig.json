@@ -9,9 +9,7 @@
 		"typeRoots": [
 			"node_modules/@types",
 		],
-		"types": [
-			"@pyoner/svelte-types",
-		],
+		"types": [],
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
 		"experimentalDecorators": true,
@@ -22,9 +20,16 @@
 		"noImplicitThis": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
+		"skipLibCheck": true,
 		"strictBindCallApply": true,
 		"strictNullChecks": true,
 		"strictFunctionTypes": true,
 		"strictPropertyInitialization": true
-	}
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+	],
 }

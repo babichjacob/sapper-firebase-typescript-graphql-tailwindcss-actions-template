@@ -1,19 +1,40 @@
 {
-	"background_color": "#ffffff",
-	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
-	"display": "minimal-ui",
-	"start_url": "/",
+	"short_name": "Opinionated Sapper project base",
+	"name": "An extremely opinionated Sapper project base",
+	"description": "A template that includes Svelte with Sapper, Firebase functions and hosting, TypeScript and TypeGraphQL, Tailwind CSS, ESLint, and automatic building and deployment with GitHub Actions",
+	"categories": [
+		"personalization",
+		"productivity"
+	],
+	"lang": "en-US",
+	"dir": "ltr",
 	"icons": [
 		{
 			"src": "logo-192.png",
 			"sizes": "192x192",
-			"type": "image/png"
+			"type": "image/png",
+			"purpose": "any maskable"
 		},
 		{
 			"src": "logo-512.png",
 			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"start_url": "/",
+	"display": "minimal-ui",
+	"background_color": "#ffffff",
+	"theme_color": "#0096D1",
+	"screenshots": [
+		{
+			"src": "screenshot-1.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "screenshot-2.png",
+			"sizes": "1280x720",
 			"type": "image/png"
 		}
 	]

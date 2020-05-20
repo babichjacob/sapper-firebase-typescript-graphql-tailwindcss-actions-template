@@ -4,6 +4,8 @@ const dev = mode === "development";
 
 module.exports = {
 	plugins: [
+		require("postcss-import"),
+
 		require("tailwindcss")("./tailwind.config.js"),
 
 		require("postcss-preset-env")({
@@ -15,7 +17,7 @@ module.exports = {
 
 		!dev && require("@fullhuman/postcss-purgecss")({
 			content: ["./src/**/*.svelte", "./src/**/*.html"],
-			defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:\/\.]+/g) || [], // eslint-disable-line no-useless-escape
+			defaultExtractor: (content) => [...content.matchAll(/(?:class:)*([\w\d-/:%.]+)/gm)].map(([_match, group, ..._rest]) => group),
 		}),
 
 		!dev && require("cssnano")({

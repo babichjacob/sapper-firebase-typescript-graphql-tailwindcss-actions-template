@@ -1,49 +1,34 @@
-import babel from "rollup-plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import config from "sapper/config/rollup";
-import json from "@rollup/plugin-json";
-import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
-import svelte from "rollup-plugin-svelte";
-import { terser } from "rollup-plugin-terser";
+import replace from "@rollup/plugin-replace";
+import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import typescript from "@rollup/plugin-typescript";
+import svelte from "rollup-plugin-svelte";
+import babel from "@rollup/plugin-babel";
+import { terser } from "rollup-plugin-terser";
+import config from "sapper/config/rollup";
 import pkg from "./package.json";
 
-const { preprocess } = require("./svelte.config");
+const preprocess = [
+	require("./svelte.config").preprocess, // eslint-disable-line global-require
+	// You could have more preprocessors, like MDsveX
+];
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
-const legacy = Boolean(process.env.SAPPER_LEGACY_BUILD);
-
-const ignoredCircularDependencies = [
-	"node_modules/@apollo/protobufjs/src/util/minimal.js",
-	"node_modules/apollo-server-core/dist/index.js",
-	"node_modules/apollo-server-core/dist/runHttpQuery.js",
-	"node_modules/apollo-server-express/node_modules/apollo-server-core/dist/index.js",
-	"node_modules/apollo-server-express/node_modules/apollo-server-core/dist/runHttpQuery.js",
-	"node_modules/glob/glob.js",
-	"node_modules/graphql-tools/dist/generate/index.js",
-	"node_modules/protobufjs/src/util/minimal.js",
-	"node_modules/type-graphql/dist/errors/index.js",
-];
+const sourcemap = dev ? "inline" : false;
+const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const warningIsIgnored = (warning) => warning.message.includes(
 	"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification",
-) || ignoredCircularDependencies.some((posixPath) => ([posixPath, posixPath.replace(/\//g, "\\")].some((path) => (warning.message.includes(`Circular dependency: ${path} ->`)))));
+) || warning.message.includes("Circular dependency: node_modules");
 
-const onwarn = (warning, onwarn_) => {
-	if (warningIsIgnored(warning)) return;
-	if (warning.code === "CIRCULAR_DEPENDENCY") if (/[/\\]@sapper[/\\]/.test(warning.message)) return;
-
-	onwarn_(warning);
-};
-
-const dedupe = (importee) => importee === "svelte" || importee.startsWith("svelte/");
+const onwarn = (warning, onwarn_) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || warningIsIgnored(warning) || onwarn_(warning);
 
 export default {
 	client: {
 		input: config.client.input(),
-		output: config.client.output(),
+		output: { ...config.client.output(), sourcemap },
 		plugins: [
 			replace({
 				"process.browser": true,
@@ -53,51 +38,47 @@ export default {
 				dev,
 				hydratable: true,
 				emitCss: true,
-				preprocess: [
-					preprocess,
-				],
-				css: (css) => {
-					css.write("static/main.css");
-				},
+				preprocess,
 			}),
 			resolve({
-				mainFields: ["module", "main", "browser"],
-				dedupe,
+				browser: true,
+				dedupe: ["svelte"],
 			}),
 			commonjs(),
 			typescript(),
 			json(),
 
-			legacy
-			&& babel({
+			legacy && babel({
 				extensions: [".js", ".mjs", ".html", ".svelte"],
-				runtimeHelpers: true,
+				babelHelpers: "runtime",
 				exclude: ["node_modules/@babel/**"],
 				presets: [
-					[
-						"@babel/preset-env",
-						{ targets: "> 0.25%, not dead" },
-					],
+					["@babel/preset-env", {
+						targets: "> 0.25%, not dead",
+					}],
 				],
 				plugins: [
 					"@babel/plugin-syntax-dynamic-import",
-					[
-						"@babel/plugin-transform-runtime",
-						{ useESModules: true },
-					],
+					["@babel/plugin-transform-runtime", {
+						useESModules: true,
+					}],
 				],
 			}),
 
-			!dev
-			&& terser({ module: true }),
+			!dev && terser({
+				module: true,
+			}),
 		],
 
 		onwarn,
+
+		// https://github.com/babichjacob/sapper-postcss-template/pull/5#issuecomment-623172265
+		preserveEntrySignatures: "strict",
 	},
 
 	server: {
 		input: config.server.input(),
-		output: config.server.output(),
+		output: { ...config.server.output(), sourcemap },
 		plugins: [
 			replace({
 				"process.browser": false,
@@ -107,25 +88,20 @@ export default {
 			svelte({
 				generate: "ssr",
 				dev,
-				preprocess: [
-					preprocess,
-				],
+				preprocess,
 			}),
-			json(),
 			resolve({
-				dedupe,
-				mainFields: ["module", "main"],
-				extensions: [".mjs", ".js", ".json", ".node", ".ts"],
+				dedupe: ["svelte"],
 			}),
-			typescript(),
 			commonjs({
 				extensions: [".js", ".ts"],
 				namedExports: { "type-graphql": ["buildSchema", "ObjectType", "Field", "ID", "Query", "Resolver"] },
 			}),
+			typescript(),
+			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(
-			// eslint-disable-next-line global-require
-			require("module").builtinModules || Object.keys(process.binding("natives")),
+			require("module").builtinModules || Object.keys(process.binding("natives")), // eslint-disable-line global-require
 		),
 
 		onwarn,

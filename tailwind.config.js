@@ -1,33 +1,19 @@
 /*
-
 Tailwind - The Utility-First CSS Framework
-
 A project by Adam Wathan (@adamwathan), Jonathan Reinink (@reinink),
 David Hemphill (@davidhemphill) and Steve Schoger (@steveschoger).
-
 View the full documentation at https://tailwindcss.com.
-
 */
 
 /* eslint-disable global-require */
 module.exports = {
+	purge: false, // Purging is taken care of in postcss.config.js
 	theme: {
-		extend: {
-			spacing: {
-				72: "18rem",
-				96: "24rem",
-				128: "32rem",
-			},
-		},
+		extend: {},
 	},
-
-	corePlugins: {
-		placeholderColor: false,
-	},
-
 	variants: {},
-
 	plugins: [
-		require("@tailwindcss/ui"),
+		// 🐛 infinite recursion during development
+		// require("@tailwindcss/ui"),
 	],
 };
