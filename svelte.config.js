@@ -1,11 +1,12 @@
-const preprocess = require("svelte-preprocess");
+import preprocess from "svelte-preprocess";
+import postcss from "./postcss.config";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 
-module.exports = {
+export default {
 	preprocess: preprocess({
-		postcss: true,
+		postcss,
 		typescript: {
 			// This returns compilation times back to what they're like without TypeScript
 			// And still type checks for production builds

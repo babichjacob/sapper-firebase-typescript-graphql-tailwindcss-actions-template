@@ -105,7 +105,16 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
 ### 💨 Optionally removing Tailwind CSS
 
 1. Remove all Tailwind imports in the `src/global.pcss` file
-2. Remove the `require("tailwindcss")("./tailwind.config.js"),` line in `postcss.config.js`
+2. Remove these lines in `postcss.config.js`:
+    1. ```js
+       import tailwindcss from "tailwindcss";
+       ```
+    3. ```js
+       import tailwindcssConfig from "./tailwind.config";
+       ```
+    3. ```js
+       tailwindcss(tailwindcssConfig),
+       ```
 3. Delete the `tailwind.config.js` file
 4. Uninstall the `tailwindcss` package
 
