@@ -22,6 +22,7 @@
 	},
 	"license": "MIT",
 	"version": "2020.05.23",
+	"type": "module",
 	"scripts": {
 		"eslint": "eslint",
 		"eslint:fix": "eslint --fix ./*.js ./src/*.js ./src/components/*.svelte ./src/graphql/*.ts ./src/routes/*.svelte ./src/routes/*.ts ./functions/*.js",
