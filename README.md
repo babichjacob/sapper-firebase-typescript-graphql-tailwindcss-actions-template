@@ -1,4 +1,4 @@
-<h1 align="center">🌐 Sapper with PostCSS project base</h1>
+<h1 align="center">🌐 Opinionated Sapper project base</h1>
 
 ## ❓ What is this?
 The site that builds from this repository can be found [here](https://fir-sapper-tailwindcss.web.app/).
