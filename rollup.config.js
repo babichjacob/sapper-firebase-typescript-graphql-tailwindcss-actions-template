@@ -8,13 +8,12 @@ import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
 import pkg from "./package.json";
-import svelteConfig from "./svelte.config";
+import { preprocess as sveltePreprocessConfig } from "./svelte.config";
 
 const preprocess = [
-	svelteConfig.preprocess,
+	sveltePreprocessConfig,
 	// You could have more preprocessors, like MDsveX
 ];
-
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -25,11 +24,12 @@ const warningIsIgnored = (warning) => warning.message.includes(
 	"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification",
 ) || warning.message.includes("Circular dependency: node_modules");
 
-const onwarn = (warning, onwarn_) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || warningIsIgnored(warning) || onwarn_(warning);
+// Workaround for https://github.com/sveltejs/sapper/issues/1221
+const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || warningIsIgnored(warning) || console.warn(warning.toString());
 
 export default {
 	client: {
-		input: config.client.input(),
+		input: config.client.input().replace(/\.js$/, ".ts"),
 		output: { ...config.client.output(), sourcemap },
 		plugins: [
 			replace({
@@ -72,14 +72,12 @@ export default {
 			}),
 		],
 
+		preserveEntrySignatures: false,
 		onwarn,
-
-		// https://github.com/babichjacob/sapper-postcss-template/pull/5#issuecomment-623172265
-		preserveEntrySignatures: "strict",
 	},
 
 	server: {
-		input: config.server.input(),
+		input: { server: config.server.input().server.replace(/\.js$/, ".ts") },
 		output: { ...config.server.output(), sourcemap },
 		plugins: [
 			replace({
@@ -95,10 +93,7 @@ export default {
 			resolve({
 				dedupe: ["svelte"],
 			}),
-			commonjs({
-				extensions: [".js", ".ts"],
-				namedExports: { "type-graphql": ["buildSchema", "ObjectType", "Field", "ID", "Query", "Resolver"] },
-			}),
+			commonjs(),
 			typescript(),
 			json(),
 		],
@@ -106,11 +101,12 @@ export default {
 			require("module").builtinModules || Object.keys(process.binding("natives")), // eslint-disable-line global-require
 		),
 
+		preserveEntrySignatures: "strict",
 		onwarn,
 	},
 
 	serviceworker: {
-		input: config.serviceworker.input(),
+		input: config.serviceworker.input().replace(/\.js$/, ".ts"),
 		output: config.serviceworker.output(),
 		plugins: [
 			resolve(),
@@ -119,9 +115,11 @@ export default {
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
 			commonjs(),
+			typescript(),
 			!dev && terser(),
 		],
 
+		preserveEntrySignatures: false,
 		onwarn,
 	},
 };

@@ -1,5 +1,4 @@
 {
-    "editor.formatOnType": true,
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
@@ -11,11 +10,4 @@
     },
     "eslint.format.enable": true,
     "eslint.lintTask.enable": true,
-    "svelte.plugin.typescript.diagnostics.enable": true,
-    "svelte.plugin.typescript.hover.enable": false,
-    "svelte-type-checker.enableHoverHints": true,
-    "svelte.plugin.typescript.definitions.enable": false,
-    "svelte-type-checker.enableDefinitions": true,
-    "svelte.plugin.typescript.completions.enable": false,
-    "svelte-type-checker.enableCompletion": true,
 }

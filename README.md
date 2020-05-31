@@ -8,7 +8,7 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   - [Official VS Code Plugin (beta)](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
 - [Firebase](https://firebase.google.com/)
   - [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
-  - [Hosting](https://firebase.google.com/docs/hosting)
+  - [Hosting](https://firebase.google.com/docs/hosting) for static assets
   - Thanks to [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
 - [TypeScript](https://www.typescriptlang.org/)
   - [TypeGraphQL](https://typegraphql.ml/)
@@ -21,12 +21,14 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   - Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
 - [GitHub Actions](https://github.com/features/actions)
   - Automatic building and deployment to Firebase, triggered on commits to master
-- [ESLint](https://eslint.org/)
-  - [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-  - `eslint:fix` package script
 - [Progressive Web App (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) best practices set up
   - [`manifest.json`](https://developer.mozilla.org/en-US/docs/Web/Manifest)'s most important fields filled out
   - High [Lighthouse](https://developers.google.com/web/tools/lighthouse) audit score
+- [ESLint](https://eslint.org/)
+  - [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  - `eslint:fix` package script
+
+This template comes from combining two of my smaller ones: [one for Tailwind CSS (PostCSS)](https://github.com/babichjacob/sapper-postcss-template), and [another for TypeScript and GraphQL](https://github.com/babichjacob/sapper-typescript-graphql-template). If this is too much for you, check out one of those!
 
 ## 📋 Copy
 
@@ -92,12 +94,9 @@ Then, go to your repository's Settings > Secrets. Copy the result of the command
 You can test if it's working by making a commit to `master` and checking the Actions tab of your repository to see if your project successfully builds and deploys to Firebase.
 
 ### ⚡ Web app
-Many of the fields in `static/manifest.json` (`short_name`, `name`, `description`, `categories`, `theme_color`, and `background_color`) are filled with demonstrative values that won't match your site. Similarly, you've got to take new screenshots to replace the included `static/screenshot-1.png` and `static/screenshot-2.png` files. Once you change `theme_color`, update the `meta name="theme-color"` tag in `src/template.html` to match.
+Many of the fields in `static/manifest.json` (`short_name`, `name`, `description`, `categories`, `theme_color`, and `background_color`) are filled with demonstrative values that won't match your site. Similarly, you've got to take new screenshots to replace the included `static/screenshot-1.png` and `static/screenshot-2.png` files. If you want, you can add [app shortcut definitions for "add to home screen" on Android](https://web.dev/app-shortcuts/#define-app-shortcuts-in-the-web-app-manifest). Once you change `theme_color`, update the `meta name="theme-color"` tag in `src/template.html` to match.
 
 The [Apple touch icon](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html), favicon, and `logo-` files (also all in the `static` directory) are created by placing the logo within a "safe area" centered circle that takes up 80% of the canvas's dimension. For instance, the constraining circle in `logo-512.png` is 512 × 0.80 = 409.6 ≈ 410 pixels wide and tall. 
-
-### 🕸️ TypeGraphQL
-Edit the `namedExports` in `rollup.config.js` for `"type-graphql"` [when you need to import something from the library](https://github.com/MichalLytek/type-graphql/issues/378).
 
 ### 🗺 Source maps
 This project base comes with [source maps](https://blog.teamtreehouse.com/introduction-source-maps) enabled during development and disabled during production for the best compromise between performance and developer experience. You can change this behavior through the `sourcemap` variable in `rollup.config.js`.
