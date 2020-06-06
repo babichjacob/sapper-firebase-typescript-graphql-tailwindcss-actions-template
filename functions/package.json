@@ -18,7 +18,8 @@
     "firebase-functions": "^3.6.2",
     "node-fetch": "^2.6.0",
     "polka": "^0.5.2",
-    "sirv": "^0.4.6"
+    "sirv": "^0.4.6",
+    "websocket-extensions": "^0.1.4"
   },
   "private": true
 }
