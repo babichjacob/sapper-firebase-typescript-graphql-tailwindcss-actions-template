@@ -80,6 +80,24 @@ npm run prod
 npm run start
 ```
 
+### 📦 Deploying a Static Site to Firebase Hosting
+As of June 17th – 22nd, 2020, Cloud Functions for Firebase [requires billing set up with the Blaze Plan](https://firebase.google.com/support/faq#expandable-15).
+
+You can stay on the Spark Plan for a free and fast (no cold starts!) static site:
+```sh
+npm run deploy:export
+```
+
+This will create an exported build for you before deploying.
+
+If your project is transitioning from SSR to a static site, be sure to delete the residual `ssr` Cloud Function:
+
+```sh
+npm run firebase functions:delete ssr
+```
+
+If you do not need to include heavy Babel transforms and polyfills to support old browsers on your site, then remove the `--legacy` flag in the `sapper:export` package script to lighten it up.
+
 ## ⚙ Configuration
 
 ### 🔥 Firebase and 🐙 GitHub Actions

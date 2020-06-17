@@ -21,21 +21,28 @@
 		"url": "https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template.git"
 	},
 	"license": "MIT",
-	"version": "2020.06.05",
+	"version": "2020.06.17",
 	"scripts": {
 		"eslint": "eslint",
 		"eslint:fix": "eslint --fix ./*.js ./src/*.ts ./src/components/**/*.svelte ./src/graphql/**/*.ts ./src/routes/**/*.svelte ./src/routes/**/*.ts ./functions/*.js",
 		"firebase": "firebase",
 		"firebase:deploy": "firebase deploy",
+		"firebase:deploy:export": "firebase deploy --only hosting",
 		"sapper": "sapper",
 		"sapper:build": "cross-env NODE_ENV=production sapper build --legacy",
+		"sapper:export": "cross-env NODE_ENV=production sapper export --legacy",
 		"build:rmdir": "rimraf - functions/__sapper__/build",
 		"build:mkdir": "mkdirp functions/__sapper__/build",
-		"build:cp": "ncp ./__sapper__/build ./functions/__sapper__/build",
+		"build:cp": "ncp __sapper__/build functions/__sapper__/build",
+		"static:rmdir": "rimraf - __sapper__/export",
+		"static:mkdir": "mkdirp __sapper__/export",
+		"static:cp": "ncp ./static __sapper__/export",
 		"dev": "sapper dev",
-		"prod": "run-s build:rmdir build:mkdir sapper:build build:cp",
-		"start": "cross-env RUN_LOCALLY=1 node __sapper__/build",
-		"deploy": "run-s prod firebase:deploy"
+		"prod": "run-s build:rmdir build:mkdir sapper:build build:cp static:rmdir static:mkdir static:cp",
+		"start": "cross-env node __sapper__/build",
+		"deploy": "run-s prod firebase:deploy",
+		"export": "run-s sapper:export",
+		"deploy:export": "run-s export firebase:deploy:export"
 	},
 	"dependencies": {
 		"compression": "^1.7.4",

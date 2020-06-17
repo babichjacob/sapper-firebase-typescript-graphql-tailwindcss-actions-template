@@ -1,6 +1,6 @@
 {
 	"hosting": {
-		"public": "static",
+		"public": "__sapper__/export",
 		"ignore": [
 			"firebase.json",
 			"**/.*",

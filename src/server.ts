@@ -10,8 +10,9 @@ const PORT = process.env.PORT; // eslint-disable-line prefer-destructuring
 // @ts-ignore -- creates a warning after `rollup-plugin-replace` (set up in `rollup.config.js`)
 // replaces `process.env.NODE_ENV` with `"production"` during `prod`
 const dev = process.env.NODE_ENV === "development";
-const RUN_LOCALLY = process.env.RUN_LOCALLY; // eslint-disable-line prefer-destructuring
 
+const main = require.main === module;
+const local = dev || main;
 
 const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Express> => {
 	const app = express();
@@ -20,7 +21,7 @@ const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Ex
 
 	apolloServer.applyMiddleware({ app, path: graphqlPath });
 
-	if (dev || RUN_LOCALLY) {
+	if (local) {
 		app.use(sirv("static", { dev }));
 	}
 
@@ -32,7 +33,7 @@ const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Ex
 	return app;
 };
 
-if (dev || RUN_LOCALLY) {
+if (local) {
 	createSapperAndApolloServer("/graphql").then((app) => {
 		app.listen(PORT, (err?: any): void => { // eslint-disable-line
 			if (err) console.log("error", err);
@@ -40,4 +41,4 @@ if (dev || RUN_LOCALLY) {
 	});
 }
 
-export { createSapperAndApolloServer, sapper };
+export { createSapperAndApolloServer };
