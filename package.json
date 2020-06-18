@@ -36,12 +36,14 @@
 		"build:cp": "ncp __sapper__/build functions/__sapper__/build",
 		"static:rmdir": "rimraf - __sapper__/export",
 		"static:mkdir": "mkdirp __sapper__/export",
-		"static:cp": "ncp ./static __sapper__/export",
+		"static:cp": "ncp static __sapper__/export",
+		"static:404:cp": "ncp __sapper__/export/404/index.html __sapper__/export/404.html",
+		"static:404:rmdir": "rimraf - __sapper__/export/404",
 		"dev": "sapper dev",
 		"prod": "run-s build:rmdir build:mkdir sapper:build build:cp static:rmdir static:mkdir static:cp",
-		"start": "cross-env node __sapper__/build",
+		"start": "node __sapper__/build",
 		"deploy": "run-s prod firebase:deploy",
-		"export": "run-s sapper:export",
+		"export": "run-s sapper:export static:404:cp static:404:rmdir",
 		"deploy:export": "run-s export firebase:deploy:export"
 	},
 	"dependencies": {

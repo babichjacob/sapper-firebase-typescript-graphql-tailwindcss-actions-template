@@ -1,5 +1,5 @@
 <script lang="typescript">
-	export let status: string;
+	export let status: number;
 	export let error: Error;
 
 	// @ts-ignore

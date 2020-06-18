@@ -11,7 +11,7 @@ const PORT = process.env.PORT; // eslint-disable-line prefer-destructuring
 // replaces `process.env.NODE_ENV` with `"production"` during `prod`
 const dev = process.env.NODE_ENV === "development";
 
-const main = require.main === module;
+const main = require.main === module || require.main?.filename.match(/__sapper__\/build\/index.js$/);
 const local = dev || main;
 
 const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Express> => {

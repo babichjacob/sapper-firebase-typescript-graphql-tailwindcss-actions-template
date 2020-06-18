@@ -96,6 +96,8 @@ If your project is transitioning from SSR to a static site, be sure to delete th
 npm run firebase functions:delete ssr
 ```
 
+You will also need to remove `rewrites` from `firebase.json`.
+
 If you do not need to include heavy Babel transforms and polyfills to support old browsers on your site, then remove the `--legacy` flag in the `sapper:export` package script to lighten it up.
 
 ## ⚙ Configuration
