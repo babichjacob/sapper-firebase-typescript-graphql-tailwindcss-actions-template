@@ -1,11 +1,6 @@
 {
 	"hosting": {
 		"public": "__sapper__/export",
-		"ignore": [
-			"firebase.json",
-			"**/.*",
-			"**/node_modules/**"
-		],
 		"rewrites": [
 			{
 				"source": "**",
@@ -13,5 +8,7 @@
 			}
 		]
 	},
-	"functions": {}
+	"functions": {
+		"source": "."
+	}
 }

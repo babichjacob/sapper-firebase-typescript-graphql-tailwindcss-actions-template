@@ -12,7 +12,6 @@ const PORT = process.env.PORT; // eslint-disable-line prefer-destructuring
 const dev = process.env.NODE_ENV === "development";
 
 const main = require.main === module || require.main?.filename.match(/__sapper__\/build\/index.js$/);
-const local = dev || main;
 
 const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Express> => {
 	const app = express();
@@ -21,7 +20,7 @@ const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Ex
 
 	apolloServer.applyMiddleware({ app, path: graphqlPath });
 
-	if (local) {
+	if (main) {
 		app.use(sirv("static", { dev }));
 	}
 
@@ -33,7 +32,7 @@ const createSapperAndApolloServer = async (graphqlPath = "/graphql"): Promise<Ex
 	return app;
 };
 
-if (local) {
+if (main) {
 	createSapperAndApolloServer("/graphql").then((app) => {
 		app.listen(PORT, (err?: any): void => { // eslint-disable-line
 			if (err) console.log("error", err);
@@ -42,3 +41,6 @@ if (local) {
 }
 
 export { createSapperAndApolloServer };
+
+// For more Cloud Functions, write and export them here
+// and import and set them up in `/index.js`

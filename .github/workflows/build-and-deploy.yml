@@ -2,6 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
+      - main
       - master
 
 jobs:
@@ -9,13 +10,17 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Repo
+      - name: "Checkout Repo"
         uses: actions/checkout@master
-      - name: "Install Dependencies: Main"
-        run: npm install
-      - name: "Install Dependencies: Functions"
-        run: "cd functions && npm install && cd .."
-      - name: Build and Deploy
-        run: npm run deploy
+      
+      - name: "Install Production and Development Dependencies"
+        run: "npm install"
+      - name: "Build for Production"
+        run: "npm run prod"
+      
+      - name: "Remove all but Production Dependencies"
+        run: "npm install --only prod"
+      - name: "Deploy"
+        run: "npm run firebase:deploy"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

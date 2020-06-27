@@ -9,7 +9,8 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
 - [Firebase](https://firebase.google.com/)
   - [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   - [Hosting](https://firebase.google.com/docs/hosting) for static assets
-  - Thanks to [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
+  - Thanks to @Eckhardt-D's [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
+  - Thanks to @nhristov's [`sapper-template-firebase`](https://github.com/nhristov/sapper-template-firebase)
 - [TypeScript](https://www.typescriptlang.org/)
   - [TypeGraphQL](https://typegraphql.ml/)
   - Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
@@ -20,7 +21,7 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   - [CSSNano](https://cssnano.co/)
   - Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
 - [GitHub Actions](https://github.com/features/actions)
-  - Automatic building and deployment to Firebase, triggered on commits to master
+  - Automatic building and deployment to Firebase, triggered on commits to `main` or `master`
 - [Progressive Web App (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) best practices set up
   - [`manifest.json`](https://developer.mozilla.org/en-US/docs/Web/Manifest)'s most important fields filled out
   - High [Lighthouse](https://developers.google.com/web/tools/lighthouse) audit score
@@ -45,17 +46,10 @@ git clone https://github.com/babichjacob/sapper-firebase-typescript-graphql-tail
 Click the `Use this template` button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
 
 ### ⬇️ Install Dependencies
-Both the project root's dependencies,
 ```sh
 cd sapper-firebase-typescript-graphql-tailwindcss-actions-template
 npm install  # pnpm also works
 ```
-and the Firebase functions' dependencies (for deploying outside of GitHub Actions) need to be installed.
-```sh
-cd functions
-npm install
-```
-
 
 ## 🛠 Usage
 
@@ -111,7 +105,7 @@ npm run firebase login:ci
 ```
 Then, go to your repository's Settings > Secrets. Copy the result of the command above and save it as a Secret named `FIREBASE_TOKEN`.
 
-You can test if it's working by making a commit to `master` and checking the Actions tab of your repository to see if your project successfully builds and deploys to Firebase.
+You can test if it's working by making a commit to `main` or `master` and checking the Actions tab of your repository to see if your project successfully builds and deploys to Firebase.
 
 ### ⚡ Web app
 Many of the fields in `static/manifest.json` (`short_name`, `name`, `description`, `categories`, `theme_color`, and `background_color`) are filled with demonstrative values that won't match your site. Similarly, you've got to take new screenshots to replace the included `static/screenshot-1.png` and `static/screenshot-2.png` files. If you want, you can add [app shortcut definitions for "add to home screen" on Android](https://web.dev/app-shortcuts/#define-app-shortcuts-in-the-web-app-manifest). Once you change `theme_color`, update the `meta name="theme-color"` tag in `src/template.html` to match.

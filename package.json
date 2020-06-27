@@ -24,23 +24,20 @@
 	"version": "2020.06.27",
 	"scripts": {
 		"eslint": "eslint",
-		"eslint:fix": "eslint --fix ./*.js ./src/*.ts ./src/components/**/*.svelte ./src/graphql/**/*.ts ./src/routes/**/*.svelte ./src/routes/**/*.ts ./functions/*.js",
+		"eslint:fix": "eslint --fix ./*.js ./src/*.ts ./src/components/**/*.svelte ./src/graphql/**/*.ts ./src/routes/**/*.svelte ./src/routes/**/*.ts",
 		"firebase": "firebase",
 		"firebase:deploy": "firebase deploy",
 		"firebase:deploy:export": "firebase deploy --only hosting",
 		"sapper": "sapper",
 		"sapper:build": "cross-env NODE_ENV=production sapper build --legacy",
 		"sapper:export": "cross-env NODE_ENV=production sapper export --legacy",
-		"build:rmdir": "rimraf - functions/__sapper__/build",
-		"build:mkdir": "mkdirp functions/__sapper__/build",
-		"build:cp": "ncp __sapper__/build functions/__sapper__/build",
 		"static:rmdir": "rimraf - __sapper__/export",
 		"static:mkdir": "mkdirp __sapper__/export",
 		"static:cp": "ncp static __sapper__/export",
 		"static:404:cp": "ncp __sapper__/export/404/index.html __sapper__/export/404.html",
 		"static:404:rmdir": "rimraf - __sapper__/export/404",
 		"dev": "sapper dev",
-		"prod": "run-s build:rmdir build:mkdir sapper:build build:cp static:rmdir static:mkdir static:cp",
+		"prod": "run-s sapper:build static:rmdir static:mkdir static:cp",
 		"start": "node __sapper__/build",
 		"deploy": "run-s prod firebase:deploy",
 		"export": "run-s sapper:export static:404:cp static:404:rmdir",
@@ -49,6 +46,9 @@
 	"dependencies": {
 		"compression": "^1.7.4",
 		"express": "^4.17.1",
+		"firebase-admin": "^8.12.1",
+		"firebase-functions": "^3.7.0",
+		"firebase-tools": "^8.4.3",
 		"node-fetch": "^2.6.0",
 		"sirv": "^1.0.1"
 	},
@@ -81,7 +81,6 @@
 		"eslint-config-airbnb-base": "^14.2.0",
 		"eslint-plugin-import": "^2.22.0",
 		"eslint-plugin-svelte3": "^2.7.3",
-		"firebase-tools": "^8.4.3",
 		"graphql": "^15.0.0",
 		"mkdirp": "^1.0.3",
 		"ncp": "^2.0.0",
@@ -103,5 +102,8 @@
 		"type-graphql": "^1.0.0-rc.2",
 		"typescript": "^3.9.5",
 		"utf-8-validate": "^5.0.2"
+	},
+	"engines": {
+		"node": "10"
 	}
 }
