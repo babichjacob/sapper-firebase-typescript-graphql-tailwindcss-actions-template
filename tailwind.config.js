@@ -5,6 +5,8 @@
 	View the full documentation at https://tailwindcss.com.
 */
 
+import tailwindui from "@tailwindcss/ui";
+
 export default {
 	purge: false, // Purging is taken care of in postcss.config.js
 	theme: {
@@ -12,6 +14,6 @@ export default {
 	},
 	variants: {},
 	plugins: [
-		// 🐛: @tailwindcss/ui causes infinite recursion during development
+		tailwindui, // Can drastically slow down build time, disable if a problem
 	],
 };
