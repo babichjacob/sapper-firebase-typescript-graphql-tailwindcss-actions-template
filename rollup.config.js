@@ -24,7 +24,7 @@ const warningIsIgnored = (warning) => warning.message.includes(
 	"Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification",
 ) || warning.message.includes("Circular dependency: node_modules");
 
-// Workaround for https://github.com/sveltejs/sapper/issues/1221
+// Workaround for https://github.com/sveltejs/sapper/issues/1266
 const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || warningIsIgnored(warning) || console.warn(warning.toString());
 
 export default {
