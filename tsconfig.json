@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"lib": [
 			"DOM",
+			"ES2016",
 			"WebWorker"
 		],
 		"target": "ES2016",
