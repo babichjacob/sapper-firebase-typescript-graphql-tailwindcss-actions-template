@@ -5,7 +5,7 @@ The site that builds from this repository can be found [here](https://fir-sapper
 
 This is an extremely opinionated Sapper project base intended for my own use. That being said, there is quite a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
 - [Sapper for Svelte](https://sapper.svelte.dev/)
-  - [Official VS Code Plugin (beta)](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
+  - [Official VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
 - [Firebase](https://firebase.google.com/)
   - [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   - [Hosting](https://firebase.google.com/docs/hosting) for static assets
