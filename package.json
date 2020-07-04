@@ -37,7 +37,7 @@
 		"static:cp": "ncp static __sapper__/export",
 		"static:404:cp": "ncp __sapper__/export/404/index.html __sapper__/export/404.html",
 		"static:404:rmdir": "rimraf - __sapper__/export/404",
-		"dev": "sapper dev",
+		"dev": "cross-env ROLLUP_WATCH=true sapper dev",
 		"prod": "run-s sapper:build static:rmdir static:mkdir static:cp",
 		"start": "node __sapper__/build",
 		"deploy": "run-s prod firebase:deploy",
