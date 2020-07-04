@@ -27,7 +27,8 @@
 		"eslint:fix": "eslint --fix ./*.js ./src/*.ts ./src/components/**/*.svelte ./src/graphql/**/*.ts ./src/routes/**/*.svelte ./src/routes/**/*.ts",
 		"firebase": "firebase",
 		"firebase:deploy": "firebase deploy",
-		"firebase:deploy:export": "firebase deploy --only hosting",
+		"firebase:deploy:hosting": "firebase deploy --only hosting",
+		"firebase:deploy:functions": "firebase deploy --only functions",
 		"sapper": "sapper",
 		"sapper:build": "cross-env NODE_ENV=production sapper build --legacy",
 		"sapper:export": "cross-env NODE_ENV=production sapper export --legacy",
@@ -41,7 +42,7 @@
 		"start": "node __sapper__/build",
 		"deploy": "run-s prod firebase:deploy",
 		"export": "run-s sapper:export static:404:cp static:404:rmdir",
-		"deploy:export": "run-s export firebase:deploy:export"
+		"deploy:export": "run-s export firebase:deploy:hosting"
 	},
 	"dependencies": {
 		"compression": "^1.7.4",

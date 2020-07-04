@@ -12,15 +12,26 @@ jobs:
     steps:
       - name: "Checkout Repo"
         uses: actions/checkout@master
-      
       - name: "Install Production and Development Dependencies"
         run: "npm install"
+      
+      # This section makes as many pages as possible static.
+      # If you don't want that, remove it and replace firebase:deploy:functions with firebase:deploy below
+      - name: "Export a Static Build"
+        run: "npm run export"
+      - name: "Delete the Unexportable GraphQL Page"
+        run: "rm __sapper__/export/graphql"
+      - name: "Deploy Hosting"
+        run: "npm run firebase:deploy:hosting"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      
+      # On the other hand, if you only want your site to be static, remove this section
       - name: "Build for Production"
         run: "npm run prod"
-      
       - name: "Remove all but Production Dependencies"
         run: "npm install --only prod"
-      - name: "Deploy"
-        run: "npm run firebase:deploy"
+      - name: "Deploy Functions"
+        run: "npm run firebase:deploy:functions"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
