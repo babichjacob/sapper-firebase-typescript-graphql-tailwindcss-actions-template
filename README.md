@@ -9,8 +9,8 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
 - [Firebase](https://firebase.google.com/)
   - [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   - [Hosting](https://firebase.google.com/docs/hosting) for static assets
-  - Thanks to @Eckhardt-D's [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
-  - Thanks to @nhristov's [`sapper-template-firebase`](https://github.com/nhristov/sapper-template-firebase)
+  - Thanks to [@Eckhardt-D](https://github.com/Eckhardt-D)'s [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
+  - Thanks to [@nhristov](https://github.com/nhristov)'s [`sapper-template-firebase`](https://github.com/nhristov/sapper-template-firebase)
 - [TypeScript](https://www.typescriptlang.org/)
   - [TypeGraphQL](https://typegraphql.ml/)
   - Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
@@ -46,6 +46,8 @@ git clone https://github.com/babichjacob/sapper-firebase-typescript-graphql-tail
 Click the `Use this template` button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
 
 ### ⬇️ Install Dependencies
+You need to be using version 12 or higher of Node; the `package.json` `engines` field only specifies `10` for Cloud Functions for Firebase.
+
 ```sh
 cd sapper-firebase-typescript-graphql-tailwindcss-actions-template
 npm install  # pnpm also works
