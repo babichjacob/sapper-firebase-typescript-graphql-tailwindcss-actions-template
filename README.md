@@ -77,9 +77,7 @@ npm run start
 ```
 
 ### 📦 Deploying a Static Site to Firebase Hosting
-As of June 17th – 22nd, 2020, Cloud Functions for Firebase [requires billing set up with the Blaze Plan](https://firebase.google.com/support/faq#expandable-15).
-
-You can stay on the Spark Plan for a free and fast (no cold starts!) static site:
+Cloud Functions for Firebase [requires billing set up with the Blaze Plan](https://firebase.google.com/support/faq#expandable-15), but you can stay on the Spark Plan for a free and fast (no cold starts!) static site:
 ```sh
 npm run deploy:export
 ```
