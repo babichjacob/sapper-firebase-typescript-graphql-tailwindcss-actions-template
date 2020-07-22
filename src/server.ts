@@ -2,7 +2,6 @@
 import * as sapper from "@sapper/server"; // eslint-disable-line import/no-unresolved
 import compression from "compression";
 import express, { Express } from "express";
-// @ts-ignore -- doesn't package its own types until 1.0.0-next.6
 import sirv from "sirv";
 import { createApolloServer } from "./graphql";
 
