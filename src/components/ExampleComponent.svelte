@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	export let title: string;
 	export let paragraph: string;
 </script>

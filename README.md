@@ -50,7 +50,8 @@ You need to be using version 12 or higher of Node; the `package.json` `engines` 
 
 ```sh
 cd sapper-firebase-typescript-graphql-tailwindcss-actions-template
-npm install  # pnpm also works
+git checkout beta
+npm install  # pnpm probably won't work
 ```
 
 ## 🛠 Usage
@@ -123,7 +124,7 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
        import tailwindcss from "tailwindcss";
        ```
     3. ```js
-       import tailwindcssConfig from "./tailwind.config";
+       import * as tailwindcssConfig from "./tailwind.config";
        ```
     3. ```js
        tailwindcss(tailwindcssConfig),
