@@ -7,13 +7,11 @@
 
 import tailwindui from "@tailwindcss/ui";
 
-export default {
-	purge: false, // Purging is taken care of in postcss.config.js
-	theme: {
-		extend: {},
-	},
-	variants: {},
-	plugins: [
-		tailwindui, // Can drastically slow down build time, disable if a problem
-	],
+export const purge = false; // Purging is taken care of in postcss.config.js
+export const theme = {
+	extend: {},
 };
+export const variants = {};
+export const plugins = [
+	tailwindui, // Can drastically slow down build time, disable if a problem
+];

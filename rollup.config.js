@@ -9,7 +9,7 @@ import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
 import sveltePreprocess from "svelte-preprocess";
 import pkg from "./package.json";
-import postcss from "./postcss.config";
+import * as postcss from "./postcss.config";
 
 const preprocess = [
 	sveltePreprocess({ postcss }),
