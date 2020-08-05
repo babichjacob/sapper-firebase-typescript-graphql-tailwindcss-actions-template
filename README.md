@@ -123,7 +123,7 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
        import tailwindcss from "tailwindcss";
        ```
     3. ```js
-       import tailwindcssConfig from "./tailwind.config";
+       import * as tailwindcssConfig from "./tailwind.config";
        ```
     3. ```js
        tailwindcss(tailwindcssConfig),
