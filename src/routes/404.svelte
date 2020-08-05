@@ -1,7 +1,6 @@
-<!-- https://firebase.google.com/docs/hosting/full-config#404 -->
-
-<script lang="typescript">
+<script lang="ts">
 	import ErrorPage from "./_error.svelte";
 </script>
 
-<ErrorPage status={404} error={{ message: "Not found" }} />
+<!-- https://firebase.google.com/docs/hosting/full-config#404 -->
+<ErrorPage status={404} error={{ name: "Error", message: 'Not found' }} />

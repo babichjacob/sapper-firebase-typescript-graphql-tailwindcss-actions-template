@@ -7,11 +7,12 @@ import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
+import sveltePreprocess from "svelte-preprocess";
 import pkg from "./package.json";
-import { preprocess as sveltePreprocessConfig } from "./svelte.config";
+import postcss from "./postcss.config";
 
 const preprocess = [
-	sveltePreprocessConfig,
+	sveltePreprocess({ postcss }),
 	// You could have more preprocessors, like MDsveX
 ];
 
@@ -30,7 +31,7 @@ const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && 
 export default {
 	client: {
 		input: config.client.input().replace(/\.js$/, ".ts"),
-		output: { ...config.client.output(), sourcemap },
+		output: config.client.output(),
 		plugins: [
 			replace({
 				"process.browser": true,
@@ -47,7 +48,7 @@ export default {
 				dedupe: ["svelte"],
 			}),
 			commonjs(),
-			typescript(),
+			typescript({ sourceMap: !!sourcemap }),
 			json(),
 
 			legacy && babel({
@@ -94,7 +95,7 @@ export default {
 				dedupe: ["svelte"],
 			}),
 			commonjs(),
-			typescript(),
+			typescript({ sourceMap: !!sourcemap }),
 			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(
@@ -115,7 +116,7 @@ export default {
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
 			commonjs(),
-			typescript(),
+			typescript({ sourceMap: !!sourcemap }),
 			!dev && terser(),
 		],
 

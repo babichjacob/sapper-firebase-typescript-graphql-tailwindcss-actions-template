@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-globals,@typescript-eslint/no-explicit-any */
-// @ts-ignore -- generated package
 import { timestamp, files, shell } from "@sapper/service-worker";
 
 const ASSETS = `cache${timestamp}`;
