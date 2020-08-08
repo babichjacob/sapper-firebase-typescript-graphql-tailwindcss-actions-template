@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import ErrorPage from "./_error.svelte";
 </script>
 

@@ -50,9 +50,6 @@ You need to be using version 12 or higher of Node; the `package.json` `engines` 
 
 ```sh
 cd sapper-firebase-typescript-graphql-tailwindcss-actions-template
-# There is also a beta branch of this repository for the upcoming versions of Sapper and TypeScript
-# If you want to try them,
-# git checkout beta
 npm install  # pnpm also works
 ```
 
