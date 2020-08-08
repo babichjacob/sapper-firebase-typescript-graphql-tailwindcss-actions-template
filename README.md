@@ -50,8 +50,7 @@ You need to be using version 12 or higher of Node; the `package.json` `engines` 
 
 ```sh
 cd sapper-firebase-typescript-graphql-tailwindcss-actions-template
-git checkout beta
-npm install  # pnpm probably won't work
+npm install  # pnpm also works
 ```
 
 ## 🛠 Usage
