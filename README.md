@@ -149,6 +149,13 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
 
 4. Uninstall the `apollo-server-express`, `bufferutil`, `class-validator`, `reflect-metadata`, `type-graphql`, and `utf-8-validate` packages.
 
+5. Remove the now-error-causing
+   ```yaml
+   - name: "Delete the Unexportable GraphQL Page"
+     run: "rm __sapper__/export/graphql"
+   ```
+   task in `.github/workflows/build-and-deploy.yml`.
+
 ## 😵 Help! I have a question
 
 [Create an issue](https://github.com/babichjacob/sapper-typescript-graphql-template/issues/new) and I'll try to help.
