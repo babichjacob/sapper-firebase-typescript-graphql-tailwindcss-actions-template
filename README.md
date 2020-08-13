@@ -129,7 +129,7 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
        tailwindcss(tailwindcssConfig),
        ```
 3. Delete the `tailwind.config.js` file
-4. Uninstall the `tailwindcss` package
+4. Uninstall the `tailwindcss`, `@tailwindcss/custom-forms`, and `@tailwindcss/ui` packages
 
 ## 😵 Help! I have a question
 
