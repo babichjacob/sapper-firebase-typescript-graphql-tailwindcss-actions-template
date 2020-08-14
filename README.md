@@ -147,7 +147,7 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
 
 3. Delete the `src/graphql` folder.
 
-4. Uninstall the `apollo-server-express`, `bufferutil`, `class-validator`, `reflect-metadata`, `type-graphql`, and `utf-8-validate` packages.
+4. Uninstall the `apollo-server-express`, `bufferutil`, `class-validator`, `graphql`, `reflect-metadata`, `type-graphql`, and `utf-8-validate` packages.
 
 5. Remove the now-error-causing
    ```yaml
