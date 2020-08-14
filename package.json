@@ -21,7 +21,7 @@
 		"url": "https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template.git"
 	},
 	"license": "MIT",
-	"version": "2020.08.13",
+	"version": "2020.08.14",
 	"scripts": {
 		"eslint": "eslint",
 		"eslint:fix": "eslint --fix ./*.js ./src/*.ts ./src/components/**/*.svelte ./src/graphql/**/*.ts ./src/routes/**/*.svelte ./src/routes/**/*.ts",
@@ -68,7 +68,6 @@
 		"@rollup/plugin-node-resolve": "^9.0.0",
 		"@rollup/plugin-replace": "^2.3.3",
 		"@rollup/plugin-typescript": "^5.0.2",
-		"@tailwindcss/custom-forms": "^0.2.1",
 		"@tailwindcss/ui": "^0.5.0",
 		"@types/compression": "^1.7.0",
 		"@types/express": "^4.17.7",
