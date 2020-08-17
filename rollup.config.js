@@ -50,7 +50,10 @@ export default {
 				dedupe: ["svelte"],
 			}),
 			commonjs({ sourceMap: !!sourcemap }),
-			typescript({ sourceMap: !!sourcemap }),
+			typescript({
+				noEmitOnError: !dev,
+				sourceMap: !!sourcemap,
+			}),
 			json(),
 
 			legacy && babel({
@@ -97,7 +100,10 @@ export default {
 				dedupe: ["svelte"],
 			}),
 			commonjs({ sourceMap: !!sourcemap }),
-			typescript({ sourceMap: !!sourcemap }),
+			typescript({
+				noEmitOnError: !dev,
+				sourceMap: !!sourcemap,
+			}),
 			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(
@@ -118,7 +124,10 @@ export default {
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
 			commonjs({ sourceMap: !!sourcemap }),
-			typescript({ sourceMap: !!sourcemap }),
+			typescript({
+				noEmitOnError: !dev,
+				sourceMap: !!sourcemap,
+			}),
 			!dev && terser(),
 		],
 
