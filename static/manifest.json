@@ -24,8 +24,8 @@
 	],
 	"start_url": "/",
 	"display": "minimal-ui",
-	"background_color": "#ffffff",
-	"theme_color": "#0096D1",
+	"background_color": "#FFFFFF",
+	"theme_color": "#3F83F8",
 	"screenshots": [
 		{
 			"src": "screenshot-1.png",
