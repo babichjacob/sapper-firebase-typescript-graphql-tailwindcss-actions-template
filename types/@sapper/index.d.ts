@@ -9,7 +9,7 @@ declare module "@sapper/app" {
 		location: string
 	}
 
-	function goto(href: string, opts: { replaceState: boolean }): Promise<unknown>
+	function goto(href: string, opts: { replaceState: boolean, noscroll: boolean }): Promise<unknown>
 	function prefetch(href: string): Promise<{ redirect?: Redirect; data?: unknown }>
 	function prefetchRoutes(pathnames: string[]): Promise<unknown>
 	function start(opts: { target: Node }): Promise<unknown>
