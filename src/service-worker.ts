@@ -45,9 +45,7 @@ self.addEventListener("fetch", <EventType extends FetchEvent>(event: EventType) 
 
 	// always serve static files and bundler-generated assets from cache
 	if (url.host === self.location.host && cached.has(url.pathname)) {
-		caches.match(event.request).then((match): void => {
-			if (match) event.respondWith(match);
-		});
+		event.respondWith(caches.match(event.request) as Promise<Response>);
 		return;
 	}
 
