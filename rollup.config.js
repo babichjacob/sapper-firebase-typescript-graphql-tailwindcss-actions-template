@@ -7,16 +7,9 @@ import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
-import sveltePreprocess from "svelte-preprocess";
 import pkg from "./package.json";
-import * as postcss from "./postcss.config";
 
-const { defaults } = require("./svelte.config.js");
-
-const preprocess = [
-	sveltePreprocess({ defaults, postcss }),
-	// You could have more preprocessors, like MDsveX
-];
+const { preprocess } = require("./svelte.config.js");
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";

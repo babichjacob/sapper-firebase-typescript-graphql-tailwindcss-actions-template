@@ -5,7 +5,7 @@ The site that builds from this repository can be found [here](https://fir-sapper
 
 This is an extremely opinionated Sapper project base intended for my own use. That being said, there is quite a bit of work put into it to make it generalized and adaptable to your own setup, given that you want to use *most* of these things. The lower something is on this list, the easier it is to reconfigure or remove:
 - [Sapper for Svelte](https://sapper.svelte.dev/)
-  - [Official VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
+  - [Official VS Code Extension](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)
 - [Firebase](https://firebase.google.com/)
   - [Functions](https://firebase.google.com/docs/functions/) for Server Side Rendering (SSR)
   - [Hosting](https://firebase.google.com/docs/hosting) for static assets
@@ -16,6 +16,7 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   - Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
 - [PostCSS](https://postcss.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
+     - [Official VS Code Extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
   - [postcss-import](https://github.com/postcss/postcss-import)
   - [PurgeCSS](https://www.purgecss.com/)
   - [CSSNano](https://cssnano.co/)
@@ -26,7 +27,7 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   - [`manifest.json`](https://developer.mozilla.org/en-US/docs/Web/Manifest)'s most important fields filled out
   - High [Lighthouse](https://developers.google.com/web/tools/lighthouse) audit score
 - [ESLint](https://eslint.org/)
-  - [VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  - [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
   - `eslint:fix` package script
 
 This template comes from combining two of my smaller ones: [one for Tailwind CSS (PostCSS)](https://github.com/babichjacob/sapper-postcss-template), and [another for TypeScript and GraphQL](https://github.com/babichjacob/sapper-typescript-graphql-template). If this is too much for you, check out one of those!
@@ -120,10 +121,10 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
 1. Remove all Tailwind imports in the `src/global.pcss` file
 2. Remove these lines in `postcss.config.js`:
     1. ```js
-       import tailwindcss from "tailwindcss";
+       const tailwindcss = require("tailwindcss");
        ```
     3. ```js
-       import * as tailwindcssConfig from "./tailwind.config";
+       const tailwindcssConfig = require("./tailwind.config");
        ```
     3. ```js
        tailwindcss(tailwindcssConfig),
