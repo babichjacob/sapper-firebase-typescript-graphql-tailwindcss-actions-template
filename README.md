@@ -144,7 +144,7 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
        apolloServer.applyMiddleware({ app, path: graphqlPath });
        ```
 
-2. Remove the now-useless `graphqlPath` parameter to `createSapperAndApolloServer` in `src/server.ts`. This is also a good opportunity to rename the function since there is no longer an Apollo Server
+2. Remove the now-useless `graphqlPath` parameter to `createSapperAndApolloServer` in `src/server.ts`. This is also a good opportunity to rename the function since there is no longer an Apollo Server; if you do rename it, then also update the reference in `/index.js` or your Cloud Functions will still be referring to the old (now non-existent) function
 
 3. Delete the `src/graphql` folder
 
