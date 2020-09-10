@@ -8,7 +8,13 @@
 const tailwindui = require("@tailwindcss/ui");
 
 module.exports = {
-	purge: false, // Purging is taken care of in postcss.config.js
+	purge: {
+		content: ["./src/**/*.svelte", "./src/**/*.html"],
+		options: {
+			defaultExtractor: (content) => [...content.matchAll(/(?:class:)*([\w\d-/:%.]+)/gm)].map(([_match, group, ..._rest]) => group),
+			keyframes: true,
+		},
+	},
 	theme: {
 		extend: {},
 	},
@@ -18,6 +24,7 @@ module.exports = {
 	],
 
 	future: {
+		purgeLayersByDefault: true,
 		removeDeprecatedGapUtilities: true,
 	},
 };

@@ -15,11 +15,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"types": [
-			"svelte",
-			"@sapper"
-		],
-		"typeRoots": [
-			"types"
+			"svelte"
 		],
 	},
 	"include": [

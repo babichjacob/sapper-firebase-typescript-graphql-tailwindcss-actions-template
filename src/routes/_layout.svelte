@@ -18,10 +18,6 @@
 	$: path = $page.path.slice(1);
 </script>
 
-<style global>
-	@import "../global.pcss";
-</style>
-
 <svelte:head>
 	<title>
 		{path ? path.charAt(0).toUpperCase() + path.slice(1) : "Index"}

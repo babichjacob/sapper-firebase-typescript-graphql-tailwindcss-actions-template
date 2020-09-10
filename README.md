@@ -116,7 +116,7 @@ The [Apple touch icon](https://developer.apple.com/library/archive/documentation
 ### 🗺 Source maps
 This project base comes with [source maps](https://blog.teamtreehouse.com/introduction-source-maps) enabled during development and disabled during production for the best compromise between performance and developer experience. You can change this behavior through the `sourcemap` variable in `rollup.config.js`.
 
-### 💨 Optionally removing Tailwind CSS
+### 💨 Optionally removing Tailwind CSS (and PurgeCSS)
 
 1. Remove all Tailwind imports in the `src/global.pcss` file
 2. Remove these lines in `postcss.config.js`:
