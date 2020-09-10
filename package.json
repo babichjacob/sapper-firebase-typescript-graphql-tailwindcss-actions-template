@@ -40,10 +40,10 @@
 		"static:404:cp": "ncp __sapper__/export/404/index.html __sapper__/export/404.html",
 		"static:404:rmdir": "rimraf - __sapper__/export/404",
 		"dev": "run-p validate:dev sapper:dev",
-		"prod": "run-s validate sapper:build static:rmdir static:mkdir static:cp",
+		"prod": "run-s sapper:build static:rmdir static:mkdir static:cp validate",
 		"start": "node __sapper__/build",
 		"deploy": "run-s prod firebase:deploy",
-		"export": "run-s validate sapper:export static:404:cp static:404:rmdir",
+		"export": "run-s sapper:export static:404:cp static:404:rmdir validate",
 		"deploy:export": "run-s export firebase:deploy:hosting"
 	},
 	"dependencies": {
