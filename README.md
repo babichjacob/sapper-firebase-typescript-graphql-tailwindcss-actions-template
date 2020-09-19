@@ -12,7 +12,7 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
   - Thanks to [@Eckhardt-D](https://github.com/Eckhardt-D)'s [`sapper-firebase-starter`](https://github.com/Eckhardt-D/sapper-firebase-starter)
   - Thanks to [@nhristov](https://github.com/nhristov)'s [`sapper-template-firebase`](https://github.com/nhristov/sapper-template-firebase)
 - [TypeScript](https://www.typescriptlang.org/)
-  - [TypeGraphQL](https://typegraphql.ml/)
+  - [TypeGraphQL](https://typegraphql.com/)
   - Inside Svelte components, thanks to [`svelte-preprocess`](https://github.com/kaisermann/svelte-preprocess)
 - [PostCSS](https://postcss.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
