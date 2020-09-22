@@ -13,7 +13,7 @@ module.exports = {
 		tailwindcss(tailwindcssConfig),
 
 		// Plugins for polyfills and the like (such as postcss-preset-env) should generally go here
-		// but a few (like postcss-nested) have to run before Tailwind
+		// but a few have to run *before* Tailwind
 
 		!dev && cssnano({
 			preset: [
