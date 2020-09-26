@@ -100,8 +100,12 @@ export default {
 								const elapsed = parseInt(performance.now() - start, 10);
 								console.log(`${colors.bold().green("✔ global css")} (src/global.pcss → static/global.css${sourcemap === true ? " + static/global.css.map" : ""}) ${colors.gray(`(${elapsed}ms)`)}`);
 							} else if (code !== null) {
-								console.error(`global css builder exited with code ${code}`);
-								console.log(colors.bold().red("✗ global css"));
+								if (dev) {
+									console.error(`global css builder exited with code ${code}`);
+									console.log(colors.bold().red("✗ global css"));
+								} else {
+									throw new Error(`global css builder exited with code ${code}`);
+								}
 							}
 
 							builder = undefined;
