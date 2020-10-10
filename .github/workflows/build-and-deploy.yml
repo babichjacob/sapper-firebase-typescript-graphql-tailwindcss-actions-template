@@ -12,8 +12,13 @@ jobs:
     steps:
       - name: "Checkout Repo"
         uses: actions/checkout@master
+      
+      - name: "Install pnpm"
+        uses: pnpm/action-setup@v1.2.1
+        with:
+          version: 5.8
       - name: "Install Production and Development Dependencies"
-        run: "npm install"
+        run: "pnpm install"
       
       # This section makes as many pages as possible static.
       # If you don't want that, remove it and replace firebase:deploy:functions with firebase:deploy below
@@ -30,7 +35,7 @@ jobs:
       - name: "Build for Production"
         run: "npm run prod"
       - name: "Remove all but Production Dependencies"
-        run: "npm install --only prod"
+        run: "pnpm install --only prod"
       - name: "Deploy Functions"
         run: "npm run firebase:deploy:functions"
         env:
