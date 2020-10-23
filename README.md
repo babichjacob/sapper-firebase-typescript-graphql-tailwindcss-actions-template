@@ -32,6 +32,43 @@ This is an extremely opinionated Sapper project base intended for my own use. Th
 
 This template comes from combining two of my smaller ones: [one for Tailwind CSS (PostCSS)](https://github.com/babichjacob/sapper-postcss-template), and [another for TypeScript and GraphQL](https://github.com/babichjacob/sapper-typescript-graphql-template). If this is too much for you, check out one of those!
 
+
+## 🧭 Project Status
+Sapper is going to change.
+
+Until `create-svelte` and `@sveltejs/kit` are ready, **this project base will continue to be maintained**. 
+
+But, once we move on, I won't be creating project bases (templates / boilerplates) anymore. Instead, you'll apply presets onto the default template like this:
+
+```sh
+npm init svelte@next  # Use the official template from create-svelte
+
+npx use-preset babichjacob/svelte-add-firebase-hosting  # Apply the changes to set up Firebase deployment for create-svelte
+
+npx use-preset babichjacob/svelte-add-typescript  # Apply the changes to set up TypeScript for create-svelte
+npx use-preset babichjacob/svelte-add-typegraphql  # Apply the changes to set up TypeGraphQL for create-svelte as long as TypeScript is already set up
+
+npx use-preset babichjacob/svelte-add-postcss  # Apply the changes to set up PostCSS for create-svelte
+npx use-preset babichjacob/svelte-add-tailwindcss  # Apply the changes to set up Tailwind CSS for create-svelte as long as PostCSS is already set up
+
+# Remember, the above are hypothetical commands and the real ones might look and work different
+```
+
+This should have the same result as cloning a project base, but there are more reasons to reach for this solution:
+1. Reduced "heartbeat commits" (like upgrading packages to their latest versions) to prove the project still works
+2. Allows picking parts instead of taking *all or nothing* from a project base
+3. Focus on higher quality "atomic" presets. For example, there might be a `svelte-add-pwa` preset that adds a service worker and `manifest.json` with example icon files like we have now
+4. `create-svelte` is young and probably going to change often, so only affected presets will need to be updated
+5. Reduced duplication: I won't need to copy over changes from one project base to another to keep them synchronized
+
+Than there are to continue making project bases:
+1. (I suspect) preset logic is complex
+2. I suspect presets are harder to test and can have harder to predict errors
+
+So this is what's going to happen. 
+
+**Read on to use this project base today:**
+
 ## 📋 Copy
 
 Choose either to clone or fork depending on your preference.
