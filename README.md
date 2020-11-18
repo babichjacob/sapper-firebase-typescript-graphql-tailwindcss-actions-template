@@ -43,15 +43,15 @@ But, once we move on, I won't be creating project bases (templates / boilerplate
 ```sh
 npm init svelte@next  # Use the official template from create-svelte
 
-npx use-preset babichjacob/svelte-add-firebase-hosting  # Apply the changes to set up Firebase deployment for create-svelte
+npx use-preset babichjacob/svelte-add-postcss  # Apply the changes to set up PostCSS for create-svelte
+npx use-preset babichjacob/svelte-add-tailwindcss  # Apply the changes to set up Tailwind CSS for create-svelte as long as PostCSS is already set up
+# The above commands already work, by the way
 
+# The following are hypothetical commands and the real ones might look and work differently:
 npx use-preset babichjacob/svelte-add-typescript  # Apply the changes to set up TypeScript for create-svelte
 npx use-preset babichjacob/svelte-add-typegraphql  # Apply the changes to set up TypeGraphQL for create-svelte as long as TypeScript is already set up
 
-npx use-preset babichjacob/svelte-add-postcss  # Apply the changes to set up PostCSS for create-svelte
-npx use-preset babichjacob/svelte-add-tailwindcss  # Apply the changes to set up Tailwind CSS for create-svelte as long as PostCSS is already set up
-
-# Remember, the above are hypothetical commands and the real ones might look and work different
+npx use-preset babichjacob/svelte-add-firebase-hosting  # Apply the changes to set up Firebase deployment for create-svelte
 ```
 
 This should have the same result as cloning a project base, but there are more reasons to reach for this solution:
