@@ -16,7 +16,7 @@ jobs:
       - name: "Install pnpm"
         uses: pnpm/action-setup@v1.2.1
         with:
-          version: 5.8
+          version: 5.13
       - name: "Install Production and Development Dependencies"
         run: "pnpm install"
       
