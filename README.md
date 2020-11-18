@@ -70,17 +70,14 @@ So this is what's going to happen.
 **Read on to use this project base today:**
 
 ## 📋 Copy
-
 Choose either to clone or fork depending on your preference.
 
 ### 🐑 Clone
-
 ```sh
 git clone https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template
 ```
 
 ### 🍴 Fork
-
 Click the `Use this template` button on [this project's GitHub page](https://github.com/babichjacob/sapper-firebase-typescript-graphql-tailwindcss-actions-template).
 
 ### ⬇️ Install Dependencies
@@ -94,7 +91,6 @@ npm install  # pnpm also works
 ## 🛠 Usage
 
 ### 🧪 Development
-
 ```sh
 npm run dev
 ```
@@ -150,7 +146,6 @@ The [Apple touch icon](https://developer.apple.com/library/archive/documentation
 This project base comes with [source maps](https://blog.teamtreehouse.com/introduction-source-maps) enabled during development and disabled during production for the best compromise between performance and developer experience. You can change this behavior through the `sourcemap` variable in `rollup.config.js`.
 
 ### 💨 Optionally removing Tailwind CSS (and PurgeCSS)
-
 1. Remove all Tailwind imports in the `src/global.pcss` file
 2. Remove these lines in `postcss.config.js`:
     1. ```js
@@ -163,7 +158,7 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
        tailwindcss(tailwindcssConfig),
        ```
 3. Delete the `tailwind.config.js` file
-4. Uninstall the `tailwindcss` and `@tailwindcss/ui` packages
+4. Uninstall the `tailwindcss` package
 
 ### 🕸 Optionally removing the GraphQL server
 1. Remove these lines in `src/server.ts`:
@@ -191,17 +186,14 @@ This project base comes with [source maps](https://blog.teamtreehouse.com/introd
    task in `.github/workflows/build-and-deploy.yml`
 
 ## 😵 Help! I have a question
-
 [Create an issue](https://github.com/babichjacob/sapper-typescript-graphql-template/issues/new) and I'll try to help.
 
 ## 😡 Fix! There is something that needs improvement
-
 [Create an issue](https://github.com/babichjacob/sapper-typescript-graphql-template/issues/new) or [pull request](https://github.com/babichjacob/sapper-typescript-graphql-template/pulls) and I'll try to fix.
 
 I'm sorry, because of my skill level and the fragility of (the combination of) some of these tools, there are likely to be problems in this project. Thank you for bringing them to my attention or fixing them for me.
 
 ## 📄 License
-
 MIT
 
 ---
