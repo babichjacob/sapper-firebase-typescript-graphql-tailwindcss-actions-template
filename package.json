@@ -105,6 +105,6 @@
 		"utf-8-validate": "^5.0.3"
 	},
 	"engines": {
-		"node": "10"
+		"node": "12"
 	}
 }
